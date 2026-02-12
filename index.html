@@ -51,230 +51,230 @@ tbody tr:last-child td{border-bottom:none}
 .btn-r{border-color:#dc4640;color:#dc4640;background:#fff}
 .btn-r:hover{background:#dc4640;color:#fff}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-.msg{text-align:center;padding:24px;font-size:15px;font-weight:600}
-.msg-ok{color:#00a854}
-.msg-no{color:#dc4640}
 .loading{text-align:center;padding:80px 20px;color:#888;font-size:15px}
 .respondida{text-align:center;padding:20px 32px 28px;font-size:14px;color:#666}
 .respondida b{font-size:16px}
 @media(max-width:600px){
-  .head{flex-direction:column;gap:12px;padding:20px}
-  .head-r{text-align:left}
-  .cols{flex-direction:column;gap:16px}
-  .body{padding:20px}
-  .btns{flex-direction:column;padding:20px}
-  .btn{width:100%;text-align:center}
+.head{flex-direction:column;gap:12px;padding:20px}
+.head-r{text-align:left}
+.cols{flex-direction:column;gap:16px}
+.body{padding:20px}
+.btns{flex-direction:column;padding:20px}
+.btn{width:100%;text-align:center}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div id="loading" class="loading">Cargando cotizaci&#243;n...</div>
-  <div id="content" style="display:none">
-    <div class="card">
-      <div class="head">
-        <div class="head-l"><img src="https://maxblanchardf.github.io/cotizador-fse/logo.png" alt="Foto Shop Estudio" onerror="this.outerHTML='<div style=font-size:22px;font-weight:800;color:#0099CC>FOTO SHOP<br><span style=font-size:13px;color:#777;font-weight:400;letter-spacing:3px>E S T U D I O</span></div>'"></div>
-        <div class="head-r">
-          <span class="estado" id="estado"></span>
-          <div class="num" id="num"></div>
-          <div class="fecha" id="fecha"></div>
-        </div>
-      </div>
-      <div class="body">
-        <div class="cols">
-          <div class="col">
-            <div class="col-label">De</div>
-            <div class="col-name">Foto Shop Estudio</div>
-            <div class="col-info">+569 9330 6411 | max@fotoshopestudio.cl</div>
-          </div>
-          <div class="col">
-            <div class="col-label">Cliente</div>
-            <div class="col-name" id="empresa"></div>
-            <div class="col-info" id="contacto"></div>
-            <div class="col-info" id="email_tel"></div>
-          </div>
-        </div>
-        <div id="desc_box" style="display:none;margin-bottom:16px">
-          <div style="font-size:13px;color:#555;padding:8px 0;border-top:1px solid #eee" id="desc_text"></div>
-        </div>
-        <table>
-          <thead><tr><th>Producto</th><th>Descripci&#243;n</th><th class="r">Precio</th><th class="c">Cant.</th><th class="c">Imp.</th><th class="r">Importe</th></tr></thead>
-          <tbody id="items_body"></tbody>
-        </table>
-        <div class="totals"><div class="totals-box">
-          <div class="tot-row"><span>Subtotal</span><span id="subtotal"></span></div>
-          <div class="tot-row"><span>IVA 19%</span><span id="iva"></span></div>
-          <div class="tot-total"><span>Total</span><span id="total"></span></div>
-        </div></div>
-        <div id="notas_box" style="display:none" class="notas">
-          <div class="notas-t">NOTAS</div>
-          <div id="notas_list"></div>
-        </div>
-        <div id="pago_box" style="display:none" class="pago">
-          <div class="pago-t">PROGRAMACI&#211;N DE PAGO</div>
-          <div class="pago-row"><span>Vence el: <b id="vence"></b></span><span><b id="pago_monto"></b></span></div>
-        </div>
-      </div>
-      <div id="btns" class="btns" style="display:none">
-        <button class="btn btn-a" onclick="responder('aceptar')">&#10003; Aceptar Cotizaci&#243;n</button>
-        <button class="btn btn-r" onclick="responder('rechazar')">&#10005; Rechazar</button>
-      </div>
-      <div id="msg" style="display:none"></div>
-    </div>
-    <div style="text-align:center;padding:20px;font-size:11px;color:#bbb">Foto Shop Estudio &#183; La Puntilla 15740, Lo Barnechea &#183; +569 9330 6411</div>
-  </div>
-  <div id="error" style="display:none;text-align:center;padding:80px 20px">
-    <div style="font-size:48px;margin-bottom:16px">&#128196;</div>
-    <div style="font-size:18px;font-weight:600;color:#333;margin-bottom:8px">Cotizaci&#243;n no encontrada</div>
-    <div style="font-size:14px;color:#888">El enlace puede estar incorrecto o la cotizaci&#243;n ya no est&#225; disponible.</div>
-  </div>
+<div id="loading" class="loading">Cargando cotizacion...</div>
+<div id="content" style="display:none">
+<div class="card">
+<div class="head">
+<div class="head-l"><img src="https://maxblanchardf.github.io/cotizador-fse/logo.png" alt="Foto Shop Estudio" onerror="this.outerHTML='<div style=font-size:22px;font-weight:800;color:#0099CC>FOTO SHOP<br><span style=font-size:13px;color:#777;font-weight:400;letter-spacing:3px>E S T U D I O</span></div>'"></div>
+<div class="head-r">
+<span class="estado" id="estado"></span>
+<div class="num" id="num"></div>
+<div class="fecha" id="fecha"></div>
+</div>
+</div>
+<div class="body">
+<div class="cols">
+<div class="col">
+<div class="col-label">DE</div>
+<div class="col-name">Foto Shop Estudio</div>
+<div class="col-info">+569 9330 6411 | max@fotoshopestudio.cl</div>
+</div>
+<div class="col">
+<div class="col-label">CLIENTE</div>
+<div class="col-name" id="empresa"></div>
+<div class="col-info" id="contacto"></div>
+<div class="col-info" id="email_tel"></div>
+</div>
+</div>
+<div id="desc_box" style="display:none;margin-bottom:16px">
+<div style="font-size:13px;color:#555;padding:8px 0;border-top:1px solid #eee" id="desc_text"></div>
+</div>
+<table>
+<thead><tr><th>Producto</th><th>Descripcion</th><th class="r">Precio</th><th class="c">Cant.</th><th class="c">Imp.</th><th class="r">Importe</th></tr></thead>
+<tbody id="items_body"></tbody>
+</table>
+<div class="totals"><div class="totals-box">
+<div class="tot-row"><span>Subtotal</span><span id="subtotal"></span></div>
+<div class="tot-row"><span>IVA 19%</span><span id="iva"></span></div>
+<div class="tot-total"><span>Total</span><span id="total"></span></div>
+</div></div>
+<div id="notas_box" style="display:none" class="notas">
+<div class="notas-t">NOTAS</div>
+<div id="notas_list"></div>
+</div>
+<div id="pago_box" style="display:none" class="pago">
+<div class="pago-t">PROGRAMACION DE PAGO</div>
+<div class="pago-row"><span>Vence el: <b id="vence"></b></span><span><b id="pago_monto"></b></span></div>
+</div>
+</div>
+<div id="btns" class="btns" style="display:none">
+<button class="btn btn-a" onclick="responder('aceptar')">ACEPTAR COTIZACION</button>
+<button class="btn btn-r" onclick="responder('rechazar')">RECHAZAR</button>
+</div>
+<div id="msg" style="display:none"></div>
+</div>
+<div style="text-align:center;padding:20px;font-size:11px;color:#bbb">Foto Shop Estudio | La Puntilla 15740, Lo Barnechea | +569 9330 6411</div>
+</div>
+<div id="error" style="display:none;text-align:center;padding:80px 20px">
+<div style="font-size:48px;margin-bottom:16px">.</div>
+<div style="font-size:18px;font-weight:600;color:#333;margin-bottom:8px">Cotizacion no encontrada</div>
+<div style="font-size:14px;color:#888">El enlace puede estar incorrecto o la cotizacion ya no esta disponible.</div>
+</div>
 </div>
 
 <script>
-const PROXY='https://script.google.com/macros/s/AKfycby3UlNmGoJ4ccqPRm-lDmmxN3_DJNXNxgUBbmZXLDXuoIkz9m5A7O3F_R2R8hl1rZtr9A/exec';
-const params=new URLSearchParams(location.search);
-const NUM=params.get('num')||'';
+var PROXY='https://script.google.com/macros/s/AKfycby3UlNmGoJ4ccqPRm-lDmmxN3_DJNXNxgUBbmZXLDXuoIkz9m5A7O3F_R2R8hl1rZtr9A/exec';
+var params=new URLSearchParams(location.search);
+var NUM=params.get('num')||'';
 
 function $(id){return document.getElementById(id)}
 function fCLP(n){return '$'+Math.round(Number(n)||0).toLocaleString('es-CL')}
 
 function jsonp(url){
-  return new Promise((ok,fail)=>{
-    const cb='cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-    const t=setTimeout(()=>{delete window[cb];fail('Timeout')},15000);
-    window[cb]=function(d){clearTimeout(t);delete window[cb];ok(d)};
-    const s=document.createElement('script');
-    s.src=url+'&callback='+cb;
-    s.onerror=()=>{clearTimeout(t);delete window[cb];fail('Error')};
-    document.head.appendChild(s);
-    s.onload=()=>s.remove();
-  });
+return new Promise(function(ok,fail){
+var cb='cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+var t=setTimeout(function(){delete window[cb];fail('Timeout')},15000);
+window[cb]=function(d){clearTimeout(t);delete window[cb];ok(d)};
+var s=document.createElement('script');
+s.src=url+'&callback='+cb;
+s.onerror=function(){clearTimeout(t);delete window[cb];fail('Error')};
+document.head.appendChild(s);
+s.onload=function(){s.remove()};
+});
 }
 
-async function load(){
-  if(!NUM){showError();return}
-  try{
-    const r=await jsonp(PROXY+'?action=ver_cotizacion&num='+encodeURIComponent(NUM));
-    if(!r||!r.ok||!r.cotizacion){showError();return}
-    render(r.cotizacion);
-  }catch(e){console.error(e);showError()}
+function load(){
+if(!NUM){showError();return}
+jsonp(PROXY+'?action=ver_cotizacion&num='+encodeURIComponent(NUM))
+.then(function(r){
+if(!r||!r.ok||!r.cotizacion){showError();return}
+render(r.cotizacion);
+})
+.catch(function(e){console.error(e);showError()});
 }
 
 function showError(){
-  $('loading').style.display='none';
-  $('error').style.display='block';
+$('loading').style.display='none';
+$('error').style.display='block';
 }
 
 function render(c){
-  $('loading').style.display='none';
-  $('content').style.display='block';
-  
-  // Estado
-  const est=c.estado||'Enviada';
-  $('estado').textContent=est;
-  $('estado').className='estado estado-'+est.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  
-  // Header
-  $('num').innerHTML='Cotizaci&#243;n '+c.numero;
-  $('fecha').textContent=c.fecha_emision?'Emitida el '+c.fecha_emision:'';
-  
-  // Cliente
-  $('empresa').textContent=c.empresa||'&#8212;';
-  $('contacto').textContent=c.contacto||'';
-  const parts=[];
-  if(c.email)parts.push(c.email);
-  if(c.telefono)parts.push(c.telefono);
-  $('email_tel').textContent=parts.join(' | ');
-  
-  // Descripci&#243;n
-  if(c.descripcion){
-    $('desc_box').style.display='block';
-    $('desc_text').textContent=c.descripcion;
-  }
-  
-  // Items del detalle (parseando del update body)
-  const tbody=$('items_body');
-  if(c.detalle){
-    const lines=c.detalle.replace(/<[^>]+>/g,'').split('\n').filter(l=>l.trim()&&!l.includes('Detalle'));
-    lines.forEach(line=>{
-      const parts=line.trim().split(' x');
-      if(parts.length>=2){
-        const prod=parts[0].trim();
-        const rest=parts.slice(1).join(' x').trim();
-        const eqParts=rest.split('=');
-        const qty=eqParts[0].trim();
-        const imp=eqParts[1]?eqParts[1].trim():'';
-        const tr=document.createElement('tr');
-        tr.innerHTML='<td class="prod">'+prod+'</td><td></td><td class="r"></td><td class="c">'+qty+'</td><td class="c">19%</td><td class="r">'+imp+'</td>';
-        tbody.appendChild(tr);
-      }
-    });
-  }
-  
-  // Totales
-  $('subtotal').textContent=fCLP(c.subtotal);
-  $('iva').textContent=fCLP(c.iva);
-  $('total').textContent=fCLP(c.total);
-  
-  // Notas
-  if(c.notas){
-    $('notas_box').style.display='block';
-    const nl=$('notas_list');
-    c.notas.split('\n').forEach(n=>{
-      if(n.trim()){
-        const d=document.createElement('div');
-        d.className='notas-i';
-        d.textContent=n.startsWith('-')?n:'- '+n;
-        nl.appendChild(d);
-      }
-    });
-  }
-  
-  // Pago
-  if(c.fecha_vencimiento){
-    $('pago_box').style.display='block';
-    $('vence').textContent=c.fecha_vencimiento;
-    $('pago_monto').textContent=fCLP(c.total);
-  }
-  
-  // Botones solo si est&#225; pendiente/enviada
-  const estLow=est.toLowerCase();
-  if(estLow==='enviada'||estLow==='pendiente'||estLow===''){
-    $('btns').style.display='flex';
-  }else{
-    $('msg').style.display='block';
-    if(estLow.includes('aceptada')){
-      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">&#10003; Cotizaci&#243;n Aceptada</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar.</div>';
-    }else{
-      $('msg').innerHTML='<div class="respondida"><b class="msg-no">&#10005; Cotizaci&#243;n Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
-    }
-  }
+$('loading').style.display='none';
+$('content').style.display='block';
+
+var est=c.estado||'Enviada';
+$('estado').textContent=est.toUpperCase();
+var estClass=est.toLowerCase().replace(/[^a-z]/g,'');
+$('estado').className='estado estado-'+estClass;
+
+$('num').textContent='Cotizacion '+c.numero;
+$('fecha').textContent=c.fecha_emision?'Emitida el '+formatDate(c.fecha_emision):'';
+
+$('empresa').textContent=c.empresa||'--';
+$('contacto').textContent=c.contacto||'';
+var parts=[];
+if(c.email)parts.push(c.email);
+if(c.telefono)parts.push(c.telefono);
+$('email_tel').textContent=parts.join(' | ');
+
+if(c.descripcion){
+$('desc_box').style.display='block';
+$('desc_text').textContent=c.descripcion;
 }
 
-async function responder(tipo){
-  const btns=document.querySelectorAll('.btn');
-  btns.forEach(b=>b.disabled=true);
-  btns.forEach(b=>b.textContent='Procesando...');
-  try{
-    const r=await jsonp(PROXY+'?action=responder&num='+encodeURIComponent(NUM)+'&resp='+tipo);
-    $('btns').style.display='none';
-    $('msg').style.display='block';
-    if(tipo==='aceptar'){
-      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">&#10003; &#161;Cotizaci&#243;n Aceptada!</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar los pr&#243;ximos pasos.</div>';
-      $('estado').textContent='Aceptada';
-      $('estado').className='estado estado-aceptada';
-    }else{
-      $('msg').innerHTML='<div class="respondida"><b class="msg-no">&#10005; Cotizaci&#243;n Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
-      $('estado').textContent='Rechazada';
-      $('estado').className='estado estado-rechazada';
-    }
-  }catch(e){
-    console.error(e);
-    btns.forEach(b=>b.disabled=false);
-    btns[0].innerHTML='&#10003; Aceptar Cotizaci&#243;n';
-    btns[1].innerHTML='&#10005; Rechazar';
-    alert('Error al procesar. Intenta de nuevo.');
-  }
+var tbody=$('items_body');
+if(c.detalle){
+var lines=c.detalle.replace(/<[^>]+>/g,'').split('\n').filter(function(l){return l.trim()&&l.indexOf('Detalle')===-1});
+lines.forEach(function(line){
+var parts=line.trim().split(' x');
+if(parts.length>=2){
+var prod=parts[0].trim();
+var rest=parts.slice(1).join(' x').trim();
+var eqParts=rest.split('=');
+var qty=eqParts[0].trim();
+var imp=eqParts[1]?eqParts[1].trim():'';
+var tr=document.createElement('tr');
+tr.innerHTML='<td class="prod">'+prod+'</td><td></td><td class="r"></td><td class="c">'+qty+'</td><td class="c">19%</td><td class="r">'+imp+'</td>';
+tbody.appendChild(tr);
+}
+});
+}
+
+$('subtotal').textContent=fCLP(c.subtotal);
+$('iva').textContent=fCLP(c.iva);
+$('total').textContent=fCLP(c.total);
+
+if(c.notas){
+$('notas_box').style.display='block';
+var nl=$('notas_list');
+c.notas.split('\n').forEach(function(n){
+if(n.trim()){
+var d=document.createElement('div');
+d.className='notas-i';
+d.textContent=n.startsWith('-')?n:'- '+n;
+nl.appendChild(d);
+}
+});
+}
+
+if(c.fecha_vencimiento){
+$('pago_box').style.display='block';
+$('vence').textContent=formatDate(c.fecha_vencimiento);
+$('pago_monto').textContent=fCLP(c.total);
+}
+
+var estLow=est.toLowerCase();
+if(estLow==='enviada'||estLow==='pendiente'||estLow===''){
+$('btns').style.display='flex';
+}else{
+$('msg').style.display='block';
+if(estLow.indexOf('aceptada')>-1){
+$('msg').innerHTML='<div class="respondida"><b style="color:#00a854">Cotizacion Aceptada</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar.</div>';
+}else{
+$('msg').innerHTML='<div class="respondida"><b style="color:#d33">Cotizacion Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
+}
+}
+}
+
+function formatDate(d){
+if(!d)return '';
+var parts=d.split('-');
+if(parts.length===3){
+var months=['','ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+return parseInt(parts[2])+' '+months[parseInt(parts[1])]+' '+parts[0];
+}
+return d;
+}
+
+function responder(tipo){
+var btns=document.querySelectorAll('.btn');
+btns.forEach(function(b){b.disabled=true;b.textContent='Procesando...'});
+jsonp(PROXY+'?action=responder&num='+encodeURIComponent(NUM)+'&resp='+tipo)
+.then(function(r){
+$('btns').style.display='none';
+$('msg').style.display='block';
+if(tipo==='aceptar'){
+$('msg').innerHTML='<div class="respondida"><b style="color:#00a854">Cotizacion Aceptada!</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar los proximos pasos.</div>';
+$('estado').textContent='ACEPTADA';
+$('estado').className='estado estado-aceptada';
+}else{
+$('msg').innerHTML='<div class="respondida"><b style="color:#d33">Cotizacion Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
+$('estado').textContent='RECHAZADA';
+$('estado').className='estado estado-rechazada';
+}
+})
+.catch(function(e){
+console.error(e);
+btns.forEach(function(b){b.disabled=false});
+btns[0].textContent='ACEPTAR COTIZACION';
+btns[1].textContent='RECHAZAR';
+alert('Error al procesar. Intenta de nuevo.');
+});
 }
 
 load();
