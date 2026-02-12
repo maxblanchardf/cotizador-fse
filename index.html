@@ -238,7 +238,7 @@ function preview(){
     const logo=logoURL?'<img src="'+logoURL+'" style="max-width:200px;max-height:90px;object-fit:contain">':'<div style="font-size:32px;font-weight:800;color:#0099CC">FOTO SHOP<br><span style="font-size:16px;color:#555;font-weight:400;letter-spacing:4px">E S T U D I O</span></div>';
     const rows=items.map(i=>'<tr><td style="padding:8px;font-weight:600;font-size:12px">'+i.n+'</td><td style="padding:8px;font-size:11px;color:#666">'+i.d+'</td><td style="padding:8px;text-align:right;font-size:12px">'+fCLP(i.px)+'</td><td style="padding:8px;text-align:center">'+i.qty+'</td><td style="padding:8px;text-align:center;font-size:11px;color:#666">19%</td><td style="padding:8px;text-align:right;font-weight:600">'+fCLP(i.px*i.qty)+'</td></tr>').join('');
     const notas=gN().map(n=>'<div style="font-size:11px;color:#555;margin-bottom:3px">- '+n+'</div>').join('');
-    $('pc').innerHTML='<div style="font-family:Helvetica,sans-serif;color:#333;max-width:700px;margin:0 auto"><div style="text-align:right;font-size:12px;color:#888;margin-bottom:10px">'+$('est').value+'</div>'+logo+'<hr style="border:none;border-top:2px solid #0099CC;margin:16px 0"><div style="display:flex;gap:24px"><div style="flex:1"><div style="font-size:24px;font-weight:700;margin-bottom:10px">Cotización</div><div style="font-size:12px"><b>Nº:</b> '+$('nco').value+'</div><div style="font-size:12px;margin-bottom:10px"><b>Emitida:</b> '+fDate($('fem').value)+'</div><div style="font-size:11px;font-weight:600;margin-bottom:4px">DE</div><div style="font-size:12px">Foto Shop Estudio</div><div style="font-size:11px;color:#666"><b>Tel:</b> +569 9330 6411</div><div style="font-size:11px;color:#666"><b>Email:</b> max@fotoshopestudio.cl</div><div style="font-size:11px;color:#666">Max Blanchard</div><div style="font-size:11px;color:#666">La Puntilla 15740, Lo Barnechea</div></div><div style="flex:1;border:1px solid #ddd;border-radius:6px;padding:14px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">CLIENTE</div><div style="font-size:13px;font-weight:600">'+($('cemp').value||'—')+'</div><div style="font-size:12px;color:#666">'+$('ccon').value+'</div><div style="font-size:11px;color:#666"><b>Tel:</b> '+$('ctel').value+'</div><div style="font-size:11px;color:#666"><b>Email:</b> '+$('cema').value+'</div><hr style="border:none;border-top:1px solid #eee;margin:8px 0"><div style="font-size:12px;color:#555">'+$('desc').value+'</div></div></div>'+($('ses').value?'<div style="font-size:13px;font-weight:700;margin:18px 0 8px">'+$('ses').value+'</div>':'')+'<table style="width:100%;border-collapse:collapse;margin-top:8px"><thead><tr style="background:#f5f5f5"><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Producto</th><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Desc.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Precio</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Cant.</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Imp.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Total</th></tr></thead><tbody>'+rows+'</tbody></table><div style="display:flex;justify-content:flex-end;margin-top:12px"><div style="width:220px"><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>Subtotal</span><span>'+fCLP(sub)+'</span></div><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>IVA 19%</span><span>'+fCLP(iva)+'</span></div><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:6px 0;border-top:2px solid #0099CC;margin-top:4px"><span>Total</span><span>'+fCLP(tot)+'</span></div></div></div>'+(notas?'<div style="margin-top:18px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">NOTAS</div>'+notas+'</div>':'')+'</div>';
+    $('pc').innerHTML='<div style="font-family:Helvetica,sans-serif;color:#333;max-width:700px;margin:0 auto"><div style="display:flex;justify-content:space-between;align-items:flex-start">'+logo+'<div style="text-align:right"><div style="font-size:11px;color:#999;margin-bottom:4px">'+$('est').value+'</div><div style="font-size:18px;font-weight:700;color:#222">Cotización '+$('nco').value+'</div><div style="font-size:12px;color:#888">'+fDate($('fem').value)+'</div></div></div><hr style="border:none;border-top:2px solid #0099CC;margin:12px 0"><div style="display:flex;gap:24px;margin-bottom:16px"><div style="flex:1"><div style="font-size:9px;text-transform:uppercase;color:#999;font-weight:600;margin-bottom:4px">DE</div><div style="font-size:13px;font-weight:600">Foto Shop Estudio</div><div style="font-size:11px;color:#666">+569 9330 6411 | max@fotoshopestudio.cl</div></div><div style="flex:1"><div style="font-size:9px;text-transform:uppercase;color:#999;font-weight:600;margin-bottom:4px">CLIENTE</div><div style="font-size:13px;font-weight:600">'+($('cemp').value||'—')+'</div><div style="font-size:11px;color:#666">'+($('ccon').value||'')+'</div><div style="font-size:11px;color:#666">'+($('cema').value||'')+($('ctel').value?' | '+$('ctel').value:'')+'</div>'+($('desc').value?'<div style="font-size:10px;color:#999;margin-top:4px">'+$('desc').value+'</div>':'')+'</div></div>'+($('ses').value?'<div style="font-size:13px;font-weight:700;margin:8px 0">'+$('ses').value+'</div>':'')+'<table style="width:100%;border-collapse:collapse;margin-top:4px"><thead><tr style="background:#f5f5f5"><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Producto</th><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Desc.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Precio</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Cant.</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Imp.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Total</th></tr></thead><tbody>'+rows+'</tbody></table><div style="display:flex;justify-content:flex-end;margin-top:12px"><div style="width:220px"><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>Subtotal</span><span>'+fCLP(sub)+'</span></div><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>IVA 19%</span><span>'+fCLP(iva)+'</span></div><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:6px 0;border-top:2px solid #0099CC;margin-top:4px"><span>Total</span><span>'+fCLP(tot)+'</span></div></div></div>'+(notas?'<div style="margin-top:18px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">NOTAS</div>'+notas+'</div>':'')+'<div style="display:flex;justify-content:center;gap:40px;margin-top:30px;padding-top:16px"><div style="border:2px solid #64b450;border-radius:25px;padding:10px 40px;color:#64b450;font-weight:700;font-size:13px">ACEPTAR</div><div style="border:2px solid #dc4640;border-radius:25px;padding:10px 40px;color:#dc4640;font-weight:700;font-size:13px">RECHAZAR</div></div></div>';
     $('pov').classList.add('active');
 }
 function clPrev(){$('pov').classList.remove('active')}
@@ -248,25 +248,22 @@ async function genPDF(){
     const{jsPDF}=window.jspdf,doc=new jsPDF('p','mm','letter');
     const pW=doc.internal.pageSize.getWidth(),m=18,cW=pW-m*2;
     let y=15;const nc=$('nco').value||'FSE000';
-    doc.setFontSize(10);doc.setTextColor(150);doc.text($('est').value,pW-m,y,{align:'right'});
-    if(logoURL){try{doc.addImage(logoURL,'PNG',m,y,50,25);y+=30}catch(e){tL()}}else{tL()}
-    function tL(){doc.setFontSize(24);doc.setTextColor(0,153,204);doc.setFont('helvetica','bold');doc.text('FOTO SHOP',m,y+8);doc.setFontSize(12);doc.setTextColor(100);doc.setFont('helvetica','normal');doc.text('E S T U D I O',m,y+16);y+=22}
-    doc.setDrawColor(0,153,204);doc.setLineWidth(.8);doc.line(m,y,pW-m,y);y+=10;
-    doc.setFontSize(22);doc.setTextColor(30);doc.setFont('helvetica','bold');doc.text('Cotización',m,y);y+=8;
-    doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(80);
-    doc.text('Cotización: '+nc,m,y);y+=4;doc.text('Emitida el: '+fDate($('fem').value),m,y);y+=6;
-    doc.setFont('helvetica','bold');doc.text('DE',m,y);y+=4;doc.setFont('helvetica','normal');
-    doc.text('Foto Shop Estudio',m,y);y+=4;doc.text('Teléfono: +569 9330 6411',m,y);y+=4;
-    doc.text('Email: max@fotoshopestudio.cl',m,y);y+=4;doc.text('Empresa: Max Blanchard',m,y);y+=4;
-    doc.text('La Puntilla 15740, Lo Barnechea',m,y);y+=4;doc.text('Región Metropolitana, Chile',m,y);
-    const cx=pW/2+5,cy0=y-36,cw=cW/2-5;
-    doc.setDrawColor(200);doc.setLineWidth(.3);doc.rect(cx,cy0-4,cw,44);
-    let cy=cy0;doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30);
-    doc.text('CLIENTE',cx+4,cy);cy+=5;doc.setFontSize(10);doc.text($('cemp').value||'—',cx+4,cy);cy+=4;
+    // --- LOGO + Nº COTIZACIÓN EN LA MISMA LÍNEA ---
+    if(logoURL){try{doc.addImage(logoURL,'PNG',m,y,45,22)}catch(e){}}
+    doc.setFontSize(10);doc.setTextColor(150);doc.text($('est').value,pW-m,y+2,{align:'right'});
+    doc.setFontSize(16);doc.setTextColor(30);doc.setFont('helvetica','bold');doc.text('Cotización '+nc,pW-m,y+10,{align:'right'});
+    doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(100);doc.text(fDate($('fem').value),pW-m,y+16,{align:'right'});
+    y+=28;
+    doc.setDrawColor(0,153,204);doc.setLineWidth(.8);doc.line(m,y,pW-m,y);y+=8;
+    // --- DOS COLUMNAS: DE | CLIENTE ---
+    const colL=m,colR=pW/2+5,colW=(cW/2)-5;
+    doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(130);doc.text('DE',colL,y);doc.text('CLIENTE',colR,y);y+=5;
+    doc.setFontSize(10);doc.setTextColor(30);doc.text('Foto Shop Estudio',colL,y);doc.text($('cemp').value||'—',colR,y);y+=4;
     doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(80);
-    doc.text($('ccon').value||'',cx+4,cy);cy+=4;doc.text('Tel: '+($('ctel').value||''),cx+4,cy);cy+=4;
-    doc.text('Email: '+($('cema').value||''),cx+4,cy);cy+=6;
-    doc.setDrawColor(230);doc.line(cx+4,cy-2,cx+cw-4,cy-2);doc.text($('desc').value||'',cx+4,cy+2);y+=12;
+    doc.text('+569 9330 6411 | max@fotoshopestudio.cl',colL,y);doc.text($('ccon').value||'',colR,y);y+=4;
+    doc.text('',colL,y);doc.text(($('cema').value?$('cema').value:'')+(($('ctel').value&&$('cema').value)?' | ':'')+($('ctel').value||''),colR,y);y+=6;
+    if($('desc').value){doc.setFontSize(8);doc.setTextColor(120);doc.text($('desc').value,colR,y);y+=4}
+    y+=4;
     if($('ses').value){doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text($('ses').value,m,y);y+=8}
     const td=items.map(i=>[i.n,i.d,fCLP(i.px),String(i.qty),'19%',fCLP(i.px*i.qty)]);
     if(td.length){doc.autoTable({startY:y,head:[['Producto','Descripción','Precio','Cant.','Imp.','Importe']],body:td,margin:{left:m,right:m},styles:{fontSize:8,textColor:[80,80,80],cellPadding:3,font:'helvetica'},headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:7.5},columnStyles:{0:{fontStyle:'bold',textColor:[30,30,30],cellWidth:cW*.18},1:{cellWidth:cW*.28},2:{halign:'right',cellWidth:cW*.14},3:{halign:'center',cellWidth:cW*.08},4:{halign:'center',cellWidth:cW*.12},5:{halign:'right',fontStyle:'bold',cellWidth:cW*.14}},alternateRowStyles:{fillColor:[252,252,252]}});y=doc.lastAutoTable.finalY+4}
@@ -280,6 +277,17 @@ async function genPDF(){
     const notas=gN();
     if(notas.length){if(y>230){doc.addPage();y=20}doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text('NOTAS',m,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(100);notas.forEach(n=>{if(y>250){doc.addPage();y=20}const l=doc.splitTextToSize('- '+n,cW);doc.text(l,m,y);y+=l.length*4+2})}
     if($('fve').value){if(y>240){doc.addPage();y=20}y+=4;doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text('PROGRAMACIÓN DE PAGO',m,y);y+=6;doc.autoTable({startY:y,head:[['Vence el','Importe']],body:[[fDate($('fve').value),fCLP(tot)]],margin:{left:m,right:m},styles:{fontSize:9,font:'helvetica'},headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:8}})}
+    // --- BOTONES ACEPTAR / RECHAZAR ---
+    if(y>240){doc.addPage();y=20}
+    y+=10;
+    const btnW=55,btnH=14,btnY=y,btnGap=20;
+    const btnAX=pW/2-btnW-btnGap/2,btnRX=pW/2+btnGap/2;
+    // Aceptar (verde)
+    doc.setDrawColor(100,180,80);doc.setLineWidth(.6);doc.roundedRect(btnAX,btnY,btnW,btnH,7,7,'S');
+    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.setTextColor(100,180,80);doc.text('ACEPTAR',btnAX+btnW/2,btnY+btnH/2+1,{align:'center'});
+    // Rechazar (rojo)
+    doc.setDrawColor(220,70,60);doc.setLineWidth(.6);doc.roundedRect(btnRX,btnY,btnW,btnH,7,7,'S');
+    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.setTextColor(220,70,60);doc.text('RECHAZAR',btnRX+btnW/2,btnY+btnH/2+1,{align:'center'});
     doc.save('Cotizacion-'+nc+'.pdf');toast('PDF: Cotizacion-'+nc+'.pdf ✓');
     if(pOk){toast('Guardando en Monday...');await saveMon()}
 }
