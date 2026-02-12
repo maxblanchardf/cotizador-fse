@@ -3,309 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cotizador - Foto Shop Estudio</title>
+<title>Cotización - Foto Shop Estudio</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--azul:#0099CC;--azul-dk:#007AA3;--negro:#1a1a1a;--g7:#374151;--g5:#6b7280;--g3:#d1d5db;--g1:#f3f4f6;--g0:#f9fafb;--blanco:#fff;--verde:#00c875;--rojo:#e2445c;--rad:10px}
-body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);min-height:100vh}
-.hdr{background:var(--blanco);border-bottom:1px solid var(--g3);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.hdr-l{display:flex;align-items:center;gap:16px}
-.hdr-logo{font-size:20px;font-weight:700;color:var(--azul);letter-spacing:-.5px}
-.hdr-logo span{color:var(--g5);font-weight:400;font-size:14px}
-.hdr-t{font-size:15px;color:var(--g5);padding-left:16px;border-left:1px solid var(--g3)}
-.btn{padding:8px 18px;border-radius:6px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
-.bp{background:var(--azul);color:#fff}.bp:hover{background:var(--azul-dk);transform:translateY(-1px)}
-.bs{background:var(--blanco);color:var(--g7);border:1px solid var(--g3)}.bs:hover{background:var(--g1)}
-.bd{background:var(--rojo);color:#fff;font-size:11px;padding:4px 10px}
-.bsm{padding:5px 12px;font-size:12px}
-.bv{background:var(--verde);color:#fff}.bv:hover{background:#00b461}
-.ctn{max-width:1200px;margin:0 auto;padding:24px 32px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.card{background:var(--blanco);border-radius:var(--rad);border:1px solid var(--g3);overflow:hidden}
-.ch{padding:14px 20px;border-bottom:1px solid var(--g1);display:flex;justify-content:space-between;align-items:center}
-.ch h3{font-size:14px;font-weight:600}.cb{padding:20px}
-.fg{margin-bottom:14px}
-.fg label{display:block;font-size:12px;font-weight:500;color:var(--g5);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
-.fg input,.fg textarea,.fg select{width:100%;padding:8px 12px;border:1px solid var(--g3);border-radius:6px;font-family:inherit;font-size:13px;color:var(--negro);transition:border-color .15s}
-.fg input:focus,.fg select:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px rgba(0,153,204,.1)}
-.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pf{background:rgba(0,153,204,.04);border-color:var(--azul)!important}
-.pfb{display:inline-block;font-size:10px;background:var(--azul);color:#fff;padding:1px 6px;border-radius:3px;margin-left:6px;font-weight:400;text-transform:none;letter-spacing:0}
-.ctabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
-.ctab{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(--g3);background:var(--blanco);color:var(--g7);transition:all .15s}
-.ctab:hover{border-color:var(--azul);color:var(--azul)}.ctab.active{background:var(--azul);color:#fff;border-color:var(--azul)}
-.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
-.sc{border:1px solid var(--g3);border-radius:8px;padding:12px;cursor:pointer;transition:all .15s;position:relative}
-.sc:hover{border-color:var(--azul);background:rgba(0,153,204,.02)}
-.sc.sel{border-color:var(--azul);background:rgba(0,153,204,.05);box-shadow:0 0 0 2px rgba(0,153,204,.2)}
-.sn{font-size:13px;font-weight:600;margin-bottom:2px}.sd{font-size:11px;color:var(--g5);margin-bottom:6px;line-height:1.3}
-.sp{font-size:14px;font-weight:700;color:var(--azul)}.su{font-size:10px;color:var(--g5)}
-.sbg{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:var(--azul);color:#fff;font-size:12px;display:none;align-items:center;justify-content:center}
-.sc.sel .sbg{display:flex}
-.it{width:100%;border-collapse:collapse;margin-top:12px}
-.it th{text-align:left;font-size:11px;font-weight:600;color:var(--g5);text-transform:uppercase;letter-spacing:.5px;padding:8px 10px;border-bottom:2px solid var(--g1)}
-.it td{padding:8px 10px;font-size:13px;border-bottom:1px solid var(--g1);vertical-align:middle}
-.qi{width:60px;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:13px;text-align:center;font-family:inherit}
-.pi{width:90px;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:13px;text-align:right;font-family:inherit}
-.am{font-weight:600;text-align:right}
-.tots{margin-top:16px;padding-top:12px;border-top:2px solid var(--g1);display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.tr{display:flex;justify-content:space-between;width:250px;font-size:13px;color:var(--g7)}
-.tr.fin{font-size:16px;font-weight:700;color:var(--negro);padding-top:6px;border-top:2px solid var(--azul)}
-.lu{border:2px dashed var(--g3);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all .15s}
-.lu:hover{border-color:var(--azul)}.lu img{max-width:200px;max-height:80px;object-fit:contain}.lu p{font-size:12px;color:var(--g5);margin-top:8px}
-.ni{display:flex;gap:8px;align-items:start;margin-bottom:6px}
-.ni input{flex:1;padding:6px 10px;border:1px solid var(--g3);border-radius:4px;font-size:12px;font-family:inherit}
-.sbar{padding:10px 32px;background:var(--g1);border-bottom:1px solid var(--g3);font-size:12px;color:var(--g5);display:flex;gap:20px;align-items:center}
-.sbar .st{display:flex;align-items:center;gap:4px}.sbar .st strong{color:var(--negro)}
-.pov{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center}
-.pov.active{display:flex}
-.pmod{background:#fff;border-radius:12px;width:90%;max-width:800px;max-height:90vh;overflow:auto;box-shadow:0 4px 24px rgba(0,0,0,.1)}
-.pmh{padding:16px 24px;border-bottom:1px solid var(--g1);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:10}
-.pmb{padding:24px}
-.toast{position:fixed;bottom:24px;right:24px;background:var(--negro);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;box-shadow:0 4px 24px rgba(0,0,0,.1);transform:translateY(100px);opacity:0;transition:all .3s;z-index:300}
-.toast.show{transform:translateY(0);opacity:1}
-.mbadge{display:inline-flex;align-items:center;gap:6px;background:#FF3D57;color:#fff;padding:4px 12px;border-radius:4px;font-size:11px;font-weight:600}
-.sb{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:500}
-.sb-ok{background:#e6f9f0;color:#00a65a}.sb-off{background:#fff3e0;color:#e67e22}.sb-ld{background:#e8f4fd;color:#0099CC}
-.sd2{width:6px;height:6px;border-radius:50%;display:inline-block}
-.sb-ok .sd2{background:#00c875}.sb-off .sd2{background:#e67e22}.sb-ld .sd2{background:#0099CC;animation:pu 1s infinite}
-@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+body{font-family:'DM Sans',sans-serif;background:#f5f6f8;color:#1a1a1a;min-height:100vh}
+.wrap{max-width:800px;margin:0 auto;padding:32px 20px}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden}
+.head{padding:28px 32px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0099CC}
+.head-l img{max-height:50px}
+.head-r{text-align:right}
+.head-r .estado{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.estado-enviada{background:#e8f4fd;color:#0099CC}
+.estado-aceptada{background:#e6f9ef;color:#00a854}
+.estado-rechazada{background:#fde8e8;color:#d33}
+.head-r .num{font-size:20px;font-weight:700;color:#1a1a1a;margin-top:4px}
+.head-r .fecha{font-size:13px;color:#888}
+.body{padding:28px 32px}
+.cols{display:flex;gap:32px;margin-bottom:24px}
+.col{flex:1}
+.col-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#999;font-weight:600;margin-bottom:6px}
+.col-name{font-size:15px;font-weight:600;color:#222}
+.col-info{font-size:13px;color:#666;margin-top:2px}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+thead th{background:#f7f8fa;padding:10px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#777;font-weight:600;text-align:left}
+thead th.r{text-align:right}
+thead th.c{text-align:center}
+tbody td{padding:10px 12px;font-size:13px;border-bottom:1px solid #f0f0f0;color:#444}
+tbody td.prod{font-weight:600;color:#222}
+tbody td.r{text-align:right}
+tbody td.c{text-align:center}
+tbody tr:last-child td{border-bottom:none}
+.totals{display:flex;justify-content:flex-end;margin-top:8px}
+.totals-box{width:240px}
+.tot-row{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;color:#666}
+.tot-total{display:flex;justify-content:space-between;padding:8px 0;font-size:17px;font-weight:700;color:#1a1a1a;border-top:2px solid #0099CC;margin-top:4px}
+.notas{margin-top:20px;padding:16px;background:#fafbfc;border-radius:8px;border:1px solid #eee}
+.notas-t{font-size:12px;font-weight:700;color:#555;margin-bottom:6px}
+.notas-i{font-size:12px;color:#666;margin-bottom:2px}
+.pago{margin-top:20px}
+.pago-t{font-size:12px;font-weight:700;color:#555;margin-bottom:8px}
+.pago-row{display:flex;justify-content:space-between;padding:10px 14px;background:#f7f8fa;border-radius:6px;font-size:13px}
+.btns{display:flex;justify-content:center;gap:20px;padding:28px 32px;border-top:1px solid #f0f0f0}
+.btn{padding:14px 48px;border-radius:30px;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;border:2px solid;transition:all .2s;text-transform:uppercase;letter-spacing:1px}
+.btn-a{border-color:#64b450;color:#64b450;background:#fff}
+.btn-a:hover{background:#64b450;color:#fff}
+.btn-r{border-color:#dc4640;color:#dc4640;background:#fff}
+.btn-r:hover{background:#dc4640;color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.msg{text-align:center;padding:24px;font-size:15px;font-weight:600}
+.msg-ok{color:#00a854}
+.msg-no{color:#dc4640}
+.loading{text-align:center;padding:80px 20px;color:#888;font-size:15px}
+.respondida{text-align:center;padding:20px 32px 28px;font-size:14px;color:#666}
+.respondida b{font-size:16px}
+@media(max-width:600px){
+  .head{flex-direction:column;gap:12px;padding:20px}
+  .head-r{text-align:left}
+  .cols{flex-direction:column;gap:16px}
+  .body{padding:20px}
+  .btns{flex-direction:column;padding:20px}
+  .btn{width:100%;text-align:center}
+}
 </style>
 </head>
 <body>
-<div class="hdr"><div class="hdr-l">
-    <div class="hdr-logo">FOTO SHOP <span>ESTUDIO</span></div>
-    <div class="hdr-t">Generador de Cotizaciones</div>
-    <div id="msrc" style="display:none"><span class="mbadge">● Monday.com</span></div>
-    <div id="ss2" class="sb sb-ld" style="margin-left:12px"><span class="sd2"></span> Conectando...</div>
-</div><div style="display:flex;gap:10px">
-    <button class="btn bs" onclick="resetForm()">🗑 Nueva</button>
-    <button class="btn bs" onclick="preview()">👁 Vista Previa</button>
-    <button class="btn bp" onclick="genPDF()">📄 Generar PDF</button>
-</div></div>
-<div class="sbar">
-    <div class="st">Servicios: <strong id="si">0</strong></div>
-    <div class="st">Subtotal: <strong id="ss">$0</strong></div>
-    <div class="st">Total c/IVA: <strong id="stt">$0</strong></div>
-</div>
-<div class="ctn">
-    <div class="g2" style="margin-bottom:20px">
-        <div class="card"><div class="ch"><h3>📋 Datos de la Cotización</h3></div><div class="cb">
-            <div class="fr"><div class="fg"><label>Nº Cotización</label><input id="nco"></div><div class="fg"><label>Estado</label><select id="est"><option value="PENDIENTE">Pendiente</option><option value="BORRADOR">Borrador</option><option value="ACEPTADA">Aceptada</option><option value="RECHAZADA">Rechazada</option></select></div></div>
-            <div class="fr"><div class="fg"><label>Fecha Emisión</label><input type="date" id="fem"></div><div class="fg"><label>Fecha Vencimiento Pago</label><input type="date" id="fve"></div></div>
-            <div class="fg"><label>Descripción / Título</label><input id="desc" placeholder="Presupuesto Anual Cliente"></div>
-            <div class="fg"><label>Sesión / Referencia</label><input id="ses" placeholder="SESION 15 DE MARZO 2026"></div>
-        </div></div>
-        <div class="card"><div class="ch"><h3>👤 Datos del Cliente</h3></div><div class="cb">
-            <div class="fg"><label>Empresa <span id="be" class="pfb" style="display:none">desde Monday</span></label><input id="cemp" placeholder="Nombre empresa"></div>
-            <div class="fg"><label>Contacto <span id="bc" class="pfb" style="display:none">desde Monday</span></label><input id="ccon" placeholder="Nombre contacto"></div>
-            <div class="fr"><div class="fg"><label>Teléfono</label><input id="ctel" placeholder="+56 9 1234 5678"></div><div class="fg"><label>Email</label><input id="cema" placeholder="contacto@empresa.cl"></div></div>
-            <div class="fg" style="margin-top:12px"><label>Tu Logo</label><div class="lu" onclick="document.getElementById('li').click()"><div id="lp"><div style="font-size:28px;margin-bottom:4px">🖼</div><p>Click para subir logo</p></div><input type="file" id="li" accept="image/*" style="display:none" onchange="hLogo(event)"></div></div>
-        </div></div>
-    </div>
-    <div class="card"><div class="ch"><h3>📦 Catálogo</h3><div style="display:flex;gap:8px;align-items:center"><span id="catSrc" style="font-size:11px;color:var(--g5)"></span><button class="btn bsm bs" onclick="syncCat()">🔄</button><button class="btn bsm bs" onclick="addCust()">+ Manual</button></div></div><div class="cb">
-        <div class="ctabs" id="ctabs"><div class="ctab active" onclick="fCat('all',this)">Todos</div></div>
-        <div class="cgrid" id="cg"></div>
-    </div></div>
-    <div class="card" style="margin-top:20px"><div class="ch"><h3>🧾 Detalle</h3><span style="font-size:12px;color:var(--g5)" id="ic">0 items</span></div><div class="cb">
-        <table class="it"><thead><tr><th style="width:22%">Producto</th><th style="width:28%">Descripción</th><th style="width:14%;text-align:right">Precio</th><th style="width:10%;text-align:center">Cant.</th><th style="width:14%;text-align:right">Importe</th><th style="width:8%"></th></tr></thead><tbody id="itb"><tr><td colspan="6" style="text-align:center;color:var(--g5);padding:30px">Selecciona servicios ☝️</td></tr></tbody></table>
-        <div class="tots" id="tsec" style="display:none">
-            <div class="tr"><span>Subtotal (Neto)</span><span id="tsub">$0</span></div>
-            <div class="tr"><span>IVA 19%</span><span id="tiva">$0</span></div>
-            <div class="tr fin"><span>Total</span><span id="ttot">$0</span></div>
+<div class="wrap">
+  <div id="loading" class="loading">Cargando cotización...</div>
+  <div id="content" style="display:none">
+    <div class="card">
+      <div class="head">
+        <div class="head-l"><img src="https://maxblanchardf.github.io/cotizador-fse/logo.png" alt="Foto Shop Estudio" onerror="this.outerHTML='<div style=font-size:22px;font-weight:800;color:#0099CC>FOTO SHOP<br><span style=font-size:13px;color:#777;font-weight:400;letter-spacing:3px>E S T U D I O</span></div>'"></div>
+        <div class="head-r">
+          <span class="estado" id="estado"></span>
+          <div class="num" id="num"></div>
+          <div class="fecha" id="fecha"></div>
         </div>
-    </div></div>
-    <div class="card" style="margin-top:20px"><div class="ch"><h3>📝 Notas</h3><button class="btn bsm bs" onclick="addN()">+ Nota</button></div><div class="cb"><div id="nc">
-        <div class="ni"><input value="El mínimo por sesión son 45 SKU, en caso de tomar más se ajustarán proporcionalmente." class="nin"><button class="btn bd" onclick="this.parentElement.remove()">✕</button></div>
-        <div class="ni"><input value="Las prendas deben estar al menos 24 horas antes de la sesión en el estudio." class="nin"><button class="btn bd" onclick="this.parentElement.remove()">✕</button></div>
-    </div></div></div>
-    <div style="margin-top:24px;display:flex;gap:12px;justify-content:flex-end;padding-bottom:40px">
-        <button class="btn bs" onclick="preview()">👁 Vista Previa</button>
-        <button class="btn bv" onclick="genPDF()" style="padding:10px 28px;font-size:14px">📄 Generar PDF + Guardar</button>
+      </div>
+      <div class="body">
+        <div class="cols">
+          <div class="col">
+            <div class="col-label">De</div>
+            <div class="col-name">Foto Shop Estudio</div>
+            <div class="col-info">+569 9330 6411 | max@fotoshopestudio.cl</div>
+          </div>
+          <div class="col">
+            <div class="col-label">Cliente</div>
+            <div class="col-name" id="empresa"></div>
+            <div class="col-info" id="contacto"></div>
+            <div class="col-info" id="email_tel"></div>
+          </div>
+        </div>
+        <div id="desc_box" style="display:none;margin-bottom:16px">
+          <div style="font-size:13px;color:#555;padding:8px 0;border-top:1px solid #eee" id="desc_text"></div>
+        </div>
+        <table>
+          <thead><tr><th>Producto</th><th>Descripción</th><th class="r">Precio</th><th class="c">Cant.</th><th class="c">Imp.</th><th class="r">Importe</th></tr></thead>
+          <tbody id="items_body"></tbody>
+        </table>
+        <div class="totals"><div class="totals-box">
+          <div class="tot-row"><span>Subtotal</span><span id="subtotal"></span></div>
+          <div class="tot-row"><span>IVA 19%</span><span id="iva"></span></div>
+          <div class="tot-total"><span>Total</span><span id="total"></span></div>
+        </div></div>
+        <div id="notas_box" style="display:none" class="notas">
+          <div class="notas-t">NOTAS</div>
+          <div id="notas_list"></div>
+        </div>
+        <div id="pago_box" style="display:none" class="pago">
+          <div class="pago-t">PROGRAMACIÓN DE PAGO</div>
+          <div class="pago-row"><span>Vence el: <b id="vence"></b></span><span><b id="pago_monto"></b></span></div>
+        </div>
+      </div>
+      <div id="btns" class="btns" style="display:none">
+        <button class="btn btn-a" onclick="responder('aceptar')">✓ Aceptar Cotización</button>
+        <button class="btn btn-r" onclick="responder('rechazar')">✕ Rechazar</button>
+      </div>
+      <div id="msg" style="display:none"></div>
     </div>
+    <div style="text-align:center;padding:20px;font-size:11px;color:#bbb">Foto Shop Estudio · La Puntilla 15740, Lo Barnechea · +569 9330 6411</div>
+  </div>
+  <div id="error" style="display:none;text-align:center;padding:80px 20px">
+    <div style="font-size:48px;margin-bottom:16px">📄</div>
+    <div style="font-size:18px;font-weight:600;color:#333;margin-bottom:8px">Cotización no encontrada</div>
+    <div style="font-size:14px;color:#888">El enlace puede estar incorrecto o la cotización ya no está disponible.</div>
+  </div>
 </div>
-<div class="pov" id="pov" onclick="if(event.target===this)clPrev()"><div class="pmod"><div class="pmh"><h3>Vista Previa</h3><div style="display:flex;gap:8px"><button class="btn bp" onclick="genPDF()">📄 PDF</button><button class="btn bs" onclick="clPrev()">✕</button></div></div><div class="pmb" id="pc"></div></div></div>
-<div class="toast" id="toast"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
 <script>
-const PROXY_URL='https://script.google.com/macros/s/AKfycby3UlNmGoJ4ccqPRm-lDmmxN3_DJNXNxgUBbmZXLDXuoIkz9m5A7O3F_R2R8hl1rZtr9A/exec';
+const PROXY='https://script.google.com/macros/s/AKfycby3UlNmGoJ4ccqPRm-lDmmxN3_DJNXNxgUBbmZXLDXuoIkz9m5A7O3F_R2R8hl1rZtr9A/exec';
+const params=new URLSearchParams(location.search);
+const NUM=params.get('num')||'';
 
-const CF=[
-{c:"FOTO-5V",n:"Fotos x 5 Vistas",d:"Fondo blanco con 5 vistas de tu producto",p:11500,u:"Por SKU",cat:"Fotografía"},
-{c:"FOTO-3V",n:"Fotos x 3 Vistas",d:"Fondo blanco con 3 vistas",p:8500,u:"Por SKU",cat:"Fotografía"},
-{c:"FOTO-COLG",n:"Foto Producto Colgado",d:"Producto colgado 1 vista",p:5500,u:"Por SKU",cat:"Fotografía"},
-{c:"FOTO-360",n:"Foto 360°",d:"Fotografía 360° de producto",p:15000,u:"Por SKU",cat:"Fotografía"},
-{c:"FOTO-MOD",n:"Foto con Modelo",d:"Foto producto con modelo en estudio",p:18000,u:"Por SKU",cat:"Fotografía"},
-{c:"PROD-MYP",n:"Maquillaje y Pelo",d:"Valor por Jornada por 1 modelo",p:70000,u:"Por Jornada",cat:"Producción"},
-{c:"PROD-ASIS",n:"Asistente de Moda",d:"Asistente de moda en sesión",p:80000,u:"Por Jornada",cat:"Producción"},
-{c:"PROD-PLAN",n:"Plancha",d:"Planchado prendas. 24hrs antes en estudio.",p:50000,u:"Por Jornada",cat:"Producción"},
-{c:"PROD-CAT",n:"Catering",d:"Catering básico mañana + Almuerzo",p:20000,u:"Por Persona",cat:"Producción"},
-{c:"POST-BAS",n:"Retoque Básico",d:"Recorte, color, fondo blanco",p:2000,u:"Por Foto",cat:"Post-Producción"},
-{c:"POST-AVZ",n:"Retoque Avanzado",d:"Composición, sombras, limpieza",p:5000,u:"Por Foto",cat:"Post-Producción"},
-{c:"SRV-CONS",n:"Consultoría Visual",d:"Dirección visual para ecommerce",p:150000,u:"Por Sesión",cat:"Servicios Adicionales"},
-{c:"SRV-INTL",n:"Internacionalización",d:"Adaptación mercados internacionales",p:250000,u:"Por Proyecto",cat:"Servicios Adicionales"},
-];
+function $(id){return document.getElementById(id)}
+function fCLP(n){return '$'+Math.round(Number(n)||0).toLocaleString('es-CL')}
 
-let CAT=[...CF],items=[],logoURL=null,pOk=false;
-const $=id=>document.getElementById(id);
-const fCLP=n=>'$'+Math.round(n).toLocaleString('es-CL');
-const fDate=s=>{if(!s)return'';const d=new Date(s+'T12:00:00');return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()]+' '+d.getFullYear()};
+function jsonp(url){
+  return new Promise((ok,fail)=>{
+    const cb='cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+    const t=setTimeout(()=>{delete window[cb];fail('Timeout')},15000);
+    window[cb]=function(d){clearTimeout(t);delete window[cb];ok(d)};
+    const s=document.createElement('script');
+    s.src=url+'&callback='+cb;
+    s.onerror=()=>{clearTimeout(t);delete window[cb];fail('Error')};
+    document.head.appendChild(s);
+    s.onload=()=>s.remove();
+  });
+}
 
-// PROXY (JSONP for GET to avoid CORS, fetch for POST)
-function pGet(a){if(!PROXY_URL)return Promise.resolve(null);return new Promise(function(res){var cb='_cb'+Date.now()+Math.random().toString(36).substr(2,5);var to=setTimeout(function(){delete window[cb];res(null)},15000);window[cb]=function(d){clearTimeout(to);delete window[cb];res(d)};var s=document.createElement('script');s.src=PROXY_URL+'?action='+a+'&callback='+cb;s.onerror=function(){clearTimeout(to);delete window[cb];res(null);s.remove()};document.head.appendChild(s);s.onload=function(){s.remove()}})}
-async function pPost(d){if(!PROXY_URL)return null;return pGet('guardar&data='+encodeURIComponent(JSON.stringify(d)))}
-function setS(s,t){const e=$('ss2');e.className='sb sb-'+s;e.innerHTML='<span class="sd2"></span> '+t}
+async function load(){
+  if(!NUM){showError();return}
+  try{
+    const r=await jsonp(PROXY+'?action=ver_cotizacion&num='+encodeURIComponent(NUM));
+    if(!r||!r.ok||!r.cotizacion){showError();return}
+    render(r.cotizacion);
+  }catch(e){console.error(e);showError()}
+}
 
-// SYNC
-async function syncCat(){
-    if(!PROXY_URL){setS('off','Sin proxy');$('catSrc').textContent='Local';return}
-    setS('ld','Sincronizando...');
-    const p=await pGet('ping');
-    if(!p||!p.ok){setS('off','Sin conexión');$('catSrc').textContent='Local';return}
-    const d=await pGet('catalogo');
-    if(d&&d.ok&&d.catalogo&&d.catalogo.length>0){
-        CAT=d.catalogo;pOk=true;setS('ok','Monday');$('catSrc').textContent='Monday ('+d.count+')';
-        toast('Catálogo sincronizado ✓');try{localStorage.setItem('fse_cc',JSON.stringify(CAT))}catch(e){}
+function showError(){
+  $('loading').style.display='none';
+  $('error').style.display='block';
+}
+
+function render(c){
+  $('loading').style.display='none';
+  $('content').style.display='block';
+  
+  // Estado
+  const est=c.estado||'Enviada';
+  $('estado').textContent=est;
+  $('estado').className='estado estado-'+est.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  
+  // Header
+  $('num').textContent='Cotización '+c.numero;
+  $('fecha').textContent=c.fecha_emision?'Emitida el '+c.fecha_emision:'';
+  
+  // Cliente
+  $('empresa').textContent=c.empresa||'—';
+  $('contacto').textContent=c.contacto||'';
+  const parts=[];
+  if(c.email)parts.push(c.email);
+  if(c.telefono)parts.push(c.telefono);
+  $('email_tel').textContent=parts.join(' | ');
+  
+  // Descripción
+  if(c.descripcion){
+    $('desc_box').style.display='block';
+    $('desc_text').textContent=c.descripcion;
+  }
+  
+  // Items del detalle (parseando del update body)
+  const tbody=$('items_body');
+  if(c.detalle){
+    const lines=c.detalle.replace(/<[^>]+>/g,'').split('\n').filter(l=>l.trim()&&!l.includes('Detalle'));
+    lines.forEach(line=>{
+      const parts=line.trim().split(' x');
+      if(parts.length>=2){
+        const prod=parts[0].trim();
+        const rest=parts.slice(1).join(' x').trim();
+        const eqParts=rest.split('=');
+        const qty=eqParts[0].trim();
+        const imp=eqParts[1]?eqParts[1].trim():'';
+        const tr=document.createElement('tr');
+        tr.innerHTML='<td class="prod">'+prod+'</td><td></td><td class="r"></td><td class="c">'+qty+'</td><td class="c">19%</td><td class="r">'+imp+'</td>';
+        tbody.appendChild(tr);
+      }
+    });
+  }
+  
+  // Totales
+  $('subtotal').textContent=fCLP(c.subtotal);
+  $('iva').textContent=fCLP(c.iva);
+  $('total').textContent=fCLP(c.total);
+  
+  // Notas
+  if(c.notas){
+    $('notas_box').style.display='block';
+    const nl=$('notas_list');
+    c.notas.split('\n').forEach(n=>{
+      if(n.trim()){
+        const d=document.createElement('div');
+        d.className='notas-i';
+        d.textContent=n.startsWith('-')?n:'- '+n;
+        nl.appendChild(d);
+      }
+    });
+  }
+  
+  // Pago
+  if(c.fecha_vencimiento){
+    $('pago_box').style.display='block';
+    $('vence').textContent=c.fecha_vencimiento;
+    $('pago_monto').textContent=fCLP(c.total);
+  }
+  
+  // Botones solo si está pendiente/enviada
+  const estLow=est.toLowerCase();
+  if(estLow==='enviada'||estLow==='pendiente'||estLow===''){
+    $('btns').style.display='flex';
+  }else{
+    $('msg').style.display='block';
+    if(estLow.includes('aceptada')){
+      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">✓ Cotización Aceptada</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar.</div>';
     }else{
-        try{const c=localStorage.getItem('fse_cc');if(c){CAT=JSON.parse(c);setS('off','Cache');$('catSrc').textContent='Cache ('+CAT.length+')'}}catch(e){}
-        if(!pOk)setS('off','Local');
+      $('msg').innerHTML='<div class="respondida"><b class="msg-no">✕ Cotización Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
     }
-    bTabs();rCat();
+  }
 }
 
-function bTabs(){
-    const cats=[...new Set(CAT.map(s=>s.cat).filter(c=>c&&c!=='General'))];
-    const ic={'Fotografía':'📷','Producción':'🎬','Post-Producción':'🖥','Servicios Adicionales':'➕','Paquetes':'📦'};
-    $('ctabs').innerHTML='<div class="ctab active" onclick="fCat(\'all\',this)">Todos</div>'+cats.map(c=>'<div class="ctab" onclick="fCat(\''+c+'\',this)">'+(ic[c]||'📋')+' '+c+'</div>').join('');
-}
-
-// SAVE TO MONDAY
-async function saveMon(){
-    if(!PROXY_URL||!pOk)return null;
-    const sub=getSub(),tot=sub*1.19;
-    const r=await pPost({action:'guardar_presupuesto',numero:$('nco').value,empresa:$('cemp').value,contacto:$('ccon').value,email:$('cema').value,telefono:$('ctel').value,fecha:$('fem').value,validez:$('fve').value,monto_neto:sub,monto_total:tot,items:items.map(i=>({c:i.c,n:i.n,qty:i.qty,px:i.px,d:i.d})),descripcion:$('desc').value,notas:gN()});
-    if(r&&r.ok){
-        const link='https://maxblanchardf.github.io/cotizador-fse/ver/?num='+encodeURIComponent($('nco').value);
-        toast('Guardado en Monday ✓');
-        showLink(link);
-        return r;
+async function responder(tipo){
+  const btns=document.querySelectorAll('.btn');
+  btns.forEach(b=>b.disabled=true);
+  btns.forEach(b=>b.textContent='Procesando...');
+  try{
+    const r=await jsonp(PROXY+'?action=responder&num='+encodeURIComponent(NUM)+'&resp='+tipo);
+    $('btns').style.display='none';
+    $('msg').style.display='block';
+    if(tipo==='aceptar'){
+      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">✓ ¡Cotización Aceptada!</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar los próximos pasos.</div>';
+      $('estado').textContent='Aceptada';
+      $('estado').className='estado estado-aceptada';
+    }else{
+      $('msg').innerHTML='<div class="respondida"><b class="msg-no">✕ Cotización Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
+      $('estado').textContent='Rechazada';
+      $('estado').className='estado estado-rechazada';
     }
-    if(r&&r.error){toast('Error: '+r.error);console.error(r)}
-    return null;
-}
-function showLink(url){
-    let d=document.getElementById('link-box');
-    if(!d){d=document.createElement('div');d.id='link-box';d.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#fff;border:2px solid #0099CC;border-radius:12px;padding:16px 24px;box-shadow:0 4px 24px rgba(0,0,0,.15);z-index:9999;display:flex;align-items:center;gap:12px;max-width:90vw';document.body.appendChild(d)}
-    d.innerHTML='<div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:#0099CC;margin-bottom:4px">🔗 Link para el cliente</div><input readonly style="width:100%;padding:6px 10px;border:1px solid #ddd;border-radius:6px;font-size:12px;font-family:monospace;color:#333" value="'+url+'" onclick="this.select()"></div><button onclick="navigator.clipboard.writeText(\''+url+'\');this.textContent=\'✓ Copiado\';setTimeout(()=>this.textContent=\'Copiar\',2000)" style="padding:8px 16px;background:#0099CC;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit">Copiar</button><button onclick="window.open(\'mailto:'+($('cema').value||'')+'?subject=Cotización '+$('nco').value+' - Foto Shop Estudio&body=Hola '+($('ccon').value||'')+','+encodeURIComponent('\\n\\n')+'Adjunto el link a tu cotización:'+encodeURIComponent('\\n')+url+encodeURIComponent('\\n\\n')+'Saludos,'+encodeURIComponent('\\n')+'Foto Shop Estudio\')" style="padding:8px 16px;background:#374151;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:inherit">✉ Enviar</button><button onclick="this.parentElement.remove()" style="background:none;border:none;font-size:18px;cursor:pointer;color:#999;padding:0 4px">✕</button>';
-}
-
-// INIT
-document.addEventListener('DOMContentLoaded',()=>{
-    const p=new URLSearchParams(location.search);
-    $('nco').value=p.get('cotizacion')||'FSE'+(900+Math.floor(Math.random()*99));
-    $('fem').value=new Date().toISOString().split('T')[0];
-    const v=new Date();v.setDate(v.getDate()+30);$('fve').value=v.toISOString().split('T')[0];
-    if(p.get('empresa')){$('cemp').value=p.get('empresa');$('cemp').classList.add('pf');$('be').style.display='inline'}
-    if(p.get('contacto')){$('ccon').value=p.get('contacto');$('ccon').classList.add('pf');$('bc').style.display='inline'}
-    if(p.get('email'))$('cema').value=p.get('email');
-    if(p.get('telefono'))$('ctel').value=p.get('telefono');
-    if(p.get('descripcion'))$('desc').value=p.get('descripcion');
-    if(p.get('from')==='monday'){$('msrc').style.display='block';toast('Datos de Monday: '+(p.get('empresa')||''))}
-    try{const sl=localStorage.getItem('fse_logo');if(sl){logoURL=sl;$('lp').innerHTML='<img src="'+logoURL+'" alt="Logo"><p>Click para cambiar</p>'}}catch(e){}
-    bTabs();rCat();syncCat();
-});
-
-// CATÁLOGO UI
-function rCat(f){f=f||'all';const g=$('cg'),fl=f==='all'?CAT:CAT.filter(s=>s.cat===f);g.innerHTML=fl.map(s=>'<div class="sc '+(items.some(i=>i.c===s.c)?'sel':'')+'" onclick="tog(\''+s.c+'\')"><div class="sbg">✓</div><div class="sn">'+s.n+'</div><div class="sd">'+s.d+'</div><div class="sp">'+fCLP(s.p)+'</div><div class="su">'+s.u+'</div></div>').join('')}
-function fCat(c,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));el.classList.add('active');rCat(c)}
-function gCF(){const a=document.querySelector('.ctab.active');if(!a)return'all';const t=a.textContent;return t.includes('Todos')?'all':t.replace(/[^\w\sáéíóúÁÉÍÓÚñÑ-]/g,'').trim()}
-
-// ITEMS
-function tog(cod){const i=items.findIndex(x=>x.c===cod);if(i>=0)items.splice(i,1);else{const s=CAT.find(x=>x.c===cod);if(s)items.push({...s,qty:1,px:s.p})}rItems();rCat(gCF())}
-function addCust(){items.push({c:'X'+Date.now(),n:'',d:'',p:0,px:0,qty:1,u:'',cat:'',cust:true});rItems()}
-function rItems(){
-    const tb=$('itb');
-    if(!items.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--g5);padding:30px">Selecciona servicios ☝️</td></tr>';$('tsec').style.display='none';uSt();return}
-    $('tsec').style.display='flex';
-    tb.innerHTML=items.map((it,i)=>{const im=it.px*it.qty;const nm=it.cust?'<input type="text" value="'+it.n+'" onchange="items['+i+'].n=this.value" style="width:100%;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:13px" placeholder="Nombre">':'<strong>'+it.n+'</strong>';const ds=it.cust?'<input type="text" value="'+it.d+'" onchange="items['+i+'].d=this.value" style="width:100%;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:12px" placeholder="Descripción">':'<span style="font-size:12px;color:var(--g5)">'+it.d+'</span>';return '<tr><td>'+nm+'</td><td>'+ds+'</td><td style="text-align:right"><input class="pi" value="'+it.px+'" onchange="items['+i+'].px=+this.value;rItems()"></td><td style="text-align:center"><input class="qi" value="'+it.qty+'" min="1" onchange="items['+i+'].qty=+this.value||1;rItems()"></td><td class="am">'+fCLP(im)+'</td><td><button class="btn bd" onclick="items.splice('+i+',1);rItems();rCat(gCF())">✕</button></td></tr>'}).join('');
-    uTot();uSt();$('ic').textContent=items.length+' items';
-}
-function getSub(){return items.reduce((s,i)=>s+i.px*i.qty,0)}
-function uTot(){const s=getSub();$('tsub').textContent=fCLP(s);$('tiva').textContent=fCLP(s*.19);$('ttot').textContent=fCLP(s*1.19)}
-function uSt(){const s=getSub();$('si').textContent=items.length;$('ss').textContent=fCLP(s);$('stt').textContent=fCLP(s*1.19)}
-
-// LOGO
-function hLogo(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{logoURL=ev.target.result;try{localStorage.setItem('fse_logo',logoURL)}catch(e){}$('lp').innerHTML='<img src="'+logoURL+'" alt="Logo"><p>Click para cambiar</p>';toast('Logo guardado ✓')};r.readAsDataURL(f)}
-
-// NOTAS
-function addN(){const d=document.createElement('div');d.className='ni';d.innerHTML='<input class="nin" placeholder="Escribe nota..."><button class="btn bd" onclick="this.parentElement.remove()">✕</button>';$('nc').appendChild(d)}
-function gN(){return[...document.querySelectorAll('.nin')].map(i=>i.value).filter(v=>v.trim())}
-
-// PREVIEW
-function preview(){
-    const sub=getSub(),iva=sub*.19,tot=sub*1.19;
-    const logo=logoURL?'<img src="'+logoURL+'" style="max-width:200px;max-height:90px;object-fit:contain">':'<div style="font-size:32px;font-weight:800;color:#0099CC">FOTO SHOP<br><span style="font-size:16px;color:#555;font-weight:400;letter-spacing:4px">E S T U D I O</span></div>';
-    const rows=items.map(i=>'<tr><td style="padding:8px;font-weight:600;font-size:12px">'+i.n+'</td><td style="padding:8px;font-size:11px;color:#666">'+i.d+'</td><td style="padding:8px;text-align:right;font-size:12px">'+fCLP(i.px)+'</td><td style="padding:8px;text-align:center">'+i.qty+'</td><td style="padding:8px;text-align:center;font-size:11px;color:#666">19%</td><td style="padding:8px;text-align:right;font-weight:600">'+fCLP(i.px*i.qty)+'</td></tr>').join('');
-    const notas=gN().map(n=>'<div style="font-size:11px;color:#555;margin-bottom:3px">- '+n+'</div>').join('');
-    $('pc').innerHTML='<div style="font-family:Helvetica,sans-serif;color:#333;max-width:700px;margin:0 auto"><div style="display:flex;justify-content:space-between;align-items:flex-start">'+logo+'<div style="text-align:right"><div style="font-size:11px;color:#999;margin-bottom:4px">'+$('est').value+'</div><div style="font-size:18px;font-weight:700;color:#222">Cotización '+$('nco').value+'</div><div style="font-size:12px;color:#888">'+fDate($('fem').value)+'</div></div></div><hr style="border:none;border-top:2px solid #0099CC;margin:12px 0"><div style="display:flex;gap:24px;margin-bottom:16px"><div style="flex:1"><div style="font-size:9px;text-transform:uppercase;color:#999;font-weight:600;margin-bottom:4px">DE</div><div style="font-size:13px;font-weight:600">Foto Shop Estudio</div><div style="font-size:11px;color:#666">+569 9330 6411 | max@fotoshopestudio.cl</div></div><div style="flex:1"><div style="font-size:9px;text-transform:uppercase;color:#999;font-weight:600;margin-bottom:4px">CLIENTE</div><div style="font-size:13px;font-weight:600">'+($('cemp').value||'—')+'</div><div style="font-size:11px;color:#666">'+($('ccon').value||'')+'</div><div style="font-size:11px;color:#666">'+($('cema').value||'')+($('ctel').value?' | '+$('ctel').value:'')+'</div>'+($('desc').value?'<div style="font-size:10px;color:#999;margin-top:4px">'+$('desc').value+'</div>':'')+'</div></div>'+($('ses').value?'<div style="font-size:13px;font-weight:700;margin:8px 0">'+$('ses').value+'</div>':'')+'<table style="width:100%;border-collapse:collapse;margin-top:4px"><thead><tr style="background:#f5f5f5"><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Producto</th><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Desc.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Precio</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Cant.</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Imp.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Total</th></tr></thead><tbody>'+rows+'</tbody></table><div style="display:flex;justify-content:flex-end;margin-top:12px"><div style="width:220px"><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>Subtotal</span><span>'+fCLP(sub)+'</span></div><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>IVA 19%</span><span>'+fCLP(iva)+'</span></div><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:6px 0;border-top:2px solid #0099CC;margin-top:4px"><span>Total</span><span>'+fCLP(tot)+'</span></div></div></div>'+(notas?'<div style="margin-top:18px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">NOTAS</div>'+notas+'</div>':'')+'<div style="display:flex;justify-content:center;gap:40px;margin-top:30px;padding-top:16px"><div style="border:2px solid #64b450;border-radius:25px;padding:10px 40px;color:#64b450;font-weight:700;font-size:13px">ACEPTAR</div><div style="border:2px solid #dc4640;border-radius:25px;padding:10px 40px;color:#dc4640;font-weight:700;font-size:13px">RECHAZAR</div></div></div>';
-    $('pov').classList.add('active');
-}
-function clPrev(){$('pov').classList.remove('active')}
-
-// PDF + GUARDAR
-async function genPDF(){
-    const{jsPDF}=window.jspdf,doc=new jsPDF('p','mm','letter');
-    const pW=doc.internal.pageSize.getWidth(),m=18,cW=pW-m*2;
-    let y=15;const nc=$('nco').value||'FSE000';
-    // --- LOGO + Nº COTIZACIÓN EN LA MISMA LÍNEA ---
-    if(logoURL){try{doc.addImage(logoURL,'PNG',m,y,45,22)}catch(e){}}
-    doc.setFontSize(10);doc.setTextColor(150);doc.text($('est').value,pW-m,y+2,{align:'right'});
-    doc.setFontSize(16);doc.setTextColor(30);doc.setFont('helvetica','bold');doc.text('Cotización '+nc,pW-m,y+10,{align:'right'});
-    doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(100);doc.text(fDate($('fem').value),pW-m,y+16,{align:'right'});
-    y+=28;
-    doc.setDrawColor(0,153,204);doc.setLineWidth(.8);doc.line(m,y,pW-m,y);y+=8;
-    // --- DOS COLUMNAS: DE | CLIENTE ---
-    const colL=m,colR=pW/2+5,colW=(cW/2)-5;
-    doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(130);doc.text('DE',colL,y);doc.text('CLIENTE',colR,y);y+=5;
-    doc.setFontSize(10);doc.setTextColor(30);doc.text('Foto Shop Estudio',colL,y);doc.text($('cemp').value||'—',colR,y);y+=4;
-    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(80);
-    doc.text('+569 9330 6411 | max@fotoshopestudio.cl',colL,y);doc.text($('ccon').value||'',colR,y);y+=4;
-    doc.text('',colL,y);doc.text(($('cema').value?$('cema').value:'')+(($('ctel').value&&$('cema').value)?' | ':'')+($('ctel').value||''),colR,y);y+=6;
-    if($('desc').value){doc.setFontSize(8);doc.setTextColor(120);doc.text($('desc').value,colR,y);y+=4}
-    y+=4;
-    if($('ses').value){doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text($('ses').value,m,y);y+=8}
-    const td=items.map(i=>[i.n,i.d,fCLP(i.px),String(i.qty),'19%',fCLP(i.px*i.qty)]);
-    if(td.length){doc.autoTable({startY:y,head:[['Producto','Descripción','Precio','Cant.','Imp.','Importe']],body:td,margin:{left:m,right:m},styles:{fontSize:8,textColor:[80,80,80],cellPadding:3,font:'helvetica'},headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:7.5},columnStyles:{0:{fontStyle:'bold',textColor:[30,30,30],cellWidth:cW*.18},1:{cellWidth:cW*.28},2:{halign:'right',cellWidth:cW*.14},3:{halign:'center',cellWidth:cW*.08},4:{halign:'center',cellWidth:cW*.12},5:{halign:'right',fontStyle:'bold',cellWidth:cW*.14}},alternateRowStyles:{fillColor:[252,252,252]}});y=doc.lastAutoTable.finalY+4}
-    const sub=getSub(),iva=sub*.19,tot=sub*1.19,tx=pW-m-55;
-    doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(80);
-    doc.text('Subtotal',tx,y);doc.text(fCLP(sub),pW-m,y,{align:'right'});y+=5;
-    doc.text('IVA - 19%',tx,y);doc.text(fCLP(iva),pW-m,y,{align:'right'});y+=3;
-    doc.setDrawColor(0,153,204);doc.setLineWidth(.6);doc.line(tx,y,pW-m,y);y+=5;
-    doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(30);
-    doc.text('Total',tx,y);doc.text(fCLP(tot),pW-m,y,{align:'right'});y+=12;
-    const notas=gN();
-    if(notas.length){if(y>230){doc.addPage();y=20}doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text('NOTAS',m,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(100);notas.forEach(n=>{if(y>250){doc.addPage();y=20}const l=doc.splitTextToSize('- '+n,cW);doc.text(l,m,y);y+=l.length*4+2})}
-    if($('fve').value){if(y>240){doc.addPage();y=20}y+=4;doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text('PROGRAMACIÓN DE PAGO',m,y);y+=6;doc.autoTable({startY:y,head:[['Vence el','Importe']],body:[[fDate($('fve').value),fCLP(tot)]],margin:{left:m,right:m},styles:{fontSize:9,font:'helvetica'},headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:8}})}
-    // --- BOTONES ACEPTAR / RECHAZAR ---
-    if(y>240){doc.addPage();y=20}
-    y+=10;
-    const btnW=55,btnH=14,btnY=y,btnGap=20;
-    const btnAX=pW/2-btnW-btnGap/2,btnRX=pW/2+btnGap/2;
-    // Aceptar (verde)
-    doc.setDrawColor(100,180,80);doc.setLineWidth(.6);doc.roundedRect(btnAX,btnY,btnW,btnH,7,7,'S');
-    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.setTextColor(100,180,80);doc.text('ACEPTAR',btnAX+btnW/2,btnY+btnH/2+1,{align:'center'});
-    // Rechazar (rojo)
-    doc.setDrawColor(220,70,60);doc.setLineWidth(.6);doc.roundedRect(btnRX,btnY,btnW,btnH,7,7,'S');
-    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.setTextColor(220,70,60);doc.text('RECHAZAR',btnRX+btnW/2,btnY+btnH/2+1,{align:'center'});
-    doc.save('Cotizacion-'+nc+'.pdf');toast('PDF: Cotizacion-'+nc+'.pdf ✓');
-    if(pOk){toast('Guardando en Monday...');await saveMon()}
+  }catch(e){
+    console.error(e);
+    btns.forEach(b=>b.disabled=false);
+    btns[0].textContent='✓ Aceptar Cotización';
+    btns[1].textContent='✕ Rechazar';
+    alert('Error al procesar. Intenta de nuevo.');
+  }
 }
 
-// RESET & TOAST
-function resetForm(){if(!confirm('¿Borrar todo?'))return;items=[];$('nco').value='FSE'+(900+Math.floor(Math.random()*99));['cemp','ccon','ctel','cema','desc','ses'].forEach(id=>$(id).value='');$('est').value='PENDIENTE';$('fem').value=new Date().toISOString().split('T')[0];document.querySelectorAll('.pf').forEach(e=>e.classList.remove('pf'));document.querySelectorAll('.pfb').forEach(e=>e.style.display='none');rItems();rCat();toast('Limpio ✓')}
-function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+load();
 </script>
 </body>
 </html>
