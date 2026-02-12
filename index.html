@@ -4,17 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cotizador - Foto Shop Estudio</title>
-<!--
-  INSTRUCCIONES: Guarda este archivo y ábrelo en Chrome.
-  Desde Monday.com, en la columna "Cotizar" pon links como:
-  file:///ruta/Cotizador_FotoShopEstudio.html?from=monday&empresa=Raindoor&contacto=Sofia+Palma&email=sofia@raindoor.cl
-  
-  Parámetros: empresa, contacto, email, telefono, cotizacion, descripcion, from=monday
--->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--azul:#0099CC;--azul-dk:#007AA3;--negro:#1a1a1a;--g7:#374151;--g5:#6b7280;--g3:#d1d5db;--g1:#f3f4f6;--g0:#f9fafb;--blanco:#fff;--verde:#00c875;--rojo:#e2445c;--rad:10px;--sh:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.04)}
+:root{--azul:#0099CC;--azul-dk:#007AA3;--negro:#1a1a1a;--g7:#374151;--g5:#6b7280;--g3:#d1d5db;--g1:#f3f4f6;--g0:#f9fafb;--blanco:#fff;--verde:#00c875;--rojo:#e2445c;--rad:10px}
 body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);min-height:100vh}
 .hdr{background:var(--blanco);border-bottom:1px solid var(--g3);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .hdr-l{display:flex;align-items:center;gap:16px}
@@ -26,12 +19,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);mi
 .bs{background:var(--blanco);color:var(--g7);border:1px solid var(--g3)}.bs:hover{background:var(--g1)}
 .bd{background:var(--rojo);color:#fff;font-size:11px;padding:4px 10px}
 .bsm{padding:5px 12px;font-size:12px}
+.bv{background:var(--verde);color:#fff}.bv:hover{background:#00b461}
 .ctn{max-width:1200px;margin:0 auto;padding:24px 32px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .card{background:var(--blanco);border-radius:var(--rad);border:1px solid var(--g3);overflow:hidden}
 .ch{padding:14px 20px;border-bottom:1px solid var(--g1);display:flex;justify-content:space-between;align-items:center}
-.ch h3{font-size:14px;font-weight:600}
-.cb{padding:20px}
+.ch h3{font-size:14px;font-weight:600}.cb{padding:20px}
 .fg{margin-bottom:14px}
 .fg label{display:block;font-size:12px;font-weight:500;color:var(--g5);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
 .fg input,.fg textarea,.fg select{width:100%;padding:8px 12px;border:1px solid var(--g3);border-radius:6px;font-family:inherit;font-size:13px;color:var(--negro);transition:border-color .15s}
@@ -73,21 +66,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);mi
 .toast{position:fixed;bottom:24px;right:24px;background:var(--negro);color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;box-shadow:0 4px 24px rgba(0,0,0,.1);transform:translateY(100px);opacity:0;transition:all .3s;z-index:300}
 .toast.show{transform:translateY(0);opacity:1}
 .mbadge{display:inline-flex;align-items:center;gap:6px;background:#FF3D57;color:#fff;padding:4px 12px;border-radius:4px;font-size:11px;font-weight:600}
+.sb{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:500}
+.sb-ok{background:#e6f9f0;color:#00a65a}.sb-off{background:#fff3e0;color:#e67e22}.sb-ld{background:#e8f4fd;color:#0099CC}
+.sd2{width:6px;height:6px;border-radius:50%;display:inline-block}
+.sb-ok .sd2{background:#00c875}.sb-off .sd2{background:#e67e22}.sb-ld .sd2{background:#0099CC;animation:pu 1s infinite}
+@keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
 </style>
 </head>
 <body>
-<div class="hdr">
-    <div class="hdr-l">
-        <div class="hdr-logo">FOTO SHOP <span>ESTUDIO</span></div>
-        <div class="hdr-t">Generador de Cotizaciones</div>
-        <div id="msrc" style="display:none"><span class="mbadge">● Desde Monday.com</span></div>
-    </div>
-    <div style="display:flex;gap:10px">
-        <button class="btn bs" onclick="resetForm()">🗑 Nueva</button>
-        <button class="btn bs" onclick="preview()">👁 Vista Previa</button>
-        <button class="btn bp" onclick="genPDF()">📄 Generar PDF</button>
-    </div>
-</div>
+<div class="hdr"><div class="hdr-l">
+    <div class="hdr-logo">FOTO SHOP <span>ESTUDIO</span></div>
+    <div class="hdr-t">Generador de Cotizaciones</div>
+    <div id="msrc" style="display:none"><span class="mbadge">● Monday.com</span></div>
+    <div id="ss2" class="sb sb-ld" style="margin-left:12px"><span class="sd2"></span> Conectando...</div>
+</div><div style="display:flex;gap:10px">
+    <button class="btn bs" onclick="resetForm()">🗑 Nueva</button>
+    <button class="btn bs" onclick="preview()">👁 Vista Previa</button>
+    <button class="btn bp" onclick="genPDF()">📄 Generar PDF</button>
+</div></div>
 <div class="sbar">
     <div class="st">Servicios: <strong id="si">0</strong></div>
     <div class="st">Subtotal: <strong id="ss">$0</strong></div>
@@ -105,23 +101,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);mi
             <div class="fg"><label>Empresa <span id="be" class="pfb" style="display:none">desde Monday</span></label><input id="cemp" placeholder="Nombre empresa"></div>
             <div class="fg"><label>Contacto <span id="bc" class="pfb" style="display:none">desde Monday</span></label><input id="ccon" placeholder="Nombre contacto"></div>
             <div class="fr"><div class="fg"><label>Teléfono</label><input id="ctel" placeholder="+56 9 1234 5678"></div><div class="fg"><label>Email</label><input id="cema" placeholder="contacto@empresa.cl"></div></div>
-            <div class="fg" style="margin-top:12px"><label>Tu Logo (se guarda en tu navegador)</label>
-                <div class="lu" onclick="document.getElementById('li').click()">
-                    <div id="lp"><div style="font-size:28px;margin-bottom:4px">🖼</div><p>Click para subir logo (PNG/JPG)</p></div>
-                    <input type="file" id="li" accept="image/*" style="display:none" onchange="hLogo(event)">
-                </div>
-            </div>
+            <div class="fg" style="margin-top:12px"><label>Tu Logo</label><div class="lu" onclick="document.getElementById('li').click()"><div id="lp"><div style="font-size:28px;margin-bottom:4px">🖼</div><p>Click para subir logo</p></div><input type="file" id="li" accept="image/*" style="display:none" onchange="hLogo(event)"></div></div>
         </div></div>
     </div>
-    <div class="card"><div class="ch"><h3>📦 Catálogo — Click para agregar</h3><button class="btn bsm bs" onclick="addCust()">+ Manual</button></div><div class="cb">
-        <div class="ctabs" id="ctabs">
-            <div class="ctab active" onclick="fCat('all',this)">Todos</div>
-            <div class="ctab" onclick="fCat('Fotografía',this)">📷 Fotografía</div>
-            <div class="ctab" onclick="fCat('Producción',this)">🎬 Producción</div>
-            <div class="ctab" onclick="fCat('Post-Producción',this)">🖥 Post-Producción</div>
-            <div class="ctab" onclick="fCat('Servicios Adicionales',this)">➕ Adicionales</div>
-            <div class="ctab" onclick="fCat('Paquetes',this)">📦 Paquetes</div>
-        </div>
+    <div class="card"><div class="ch"><h3>📦 Catálogo</h3><div style="display:flex;gap:8px;align-items:center"><span id="catSrc" style="font-size:11px;color:var(--g5)"></span><button class="btn bsm bs" onclick="syncCat()">🔄</button><button class="btn bsm bs" onclick="addCust()">+ Manual</button></div></div><div class="cb">
+        <div class="ctabs" id="ctabs"><div class="ctab active" onclick="fCat('all',this)">Todos</div></div>
         <div class="cgrid" id="cg"></div>
     </div></div>
     <div class="card" style="margin-top:20px"><div class="ch"><h3>🧾 Detalle</h3><span style="font-size:12px;color:var(--g5)" id="ic">0 items</span></div><div class="cb">
@@ -138,7 +122,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);mi
     </div></div></div>
     <div style="margin-top:24px;display:flex;gap:12px;justify-content:flex-end;padding-bottom:40px">
         <button class="btn bs" onclick="preview()">👁 Vista Previa</button>
-        <button class="btn bp" onclick="genPDF()" style="padding:10px 28px;font-size:14px">📄 Generar PDF</button>
+        <button class="btn bv" onclick="genPDF()" style="padding:10px 28px;font-size:14px">📄 Generar PDF + Guardar</button>
     </div>
 </div>
 <div class="pov" id="pov" onclick="if(event.target===this)clPrev()"><div class="pmod"><div class="pmh"><h3>Vista Previa</h3><div style="display:flex;gap:8px"><button class="btn bp" onclick="genPDF()">📄 PDF</button><button class="btn bs" onclick="clPrev()">✕</button></div></div><div class="pmb" id="pc"></div></div></div>
@@ -146,8 +130,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--g0);color:var(--negro);mi
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <script>
-// === CATÁLOGO ===
-const CAT=[
+const PROXY_URL='https://script.google.com/macros/s/AKfycby3UlNmGoJ4ccqPRm-lDmmxN3_DJNXNxgUBbmZXLDXuoIkz9m5A7O3F_R2R8hl1rZtr9A/exec';
+
+const CF=[
 {c:"FOTO-5V",n:"Fotos x 5 Vistas",d:"Fondo blanco con 5 vistas de tu producto",p:11500,u:"Por SKU",cat:"Fotografía"},
 {c:"FOTO-3V",n:"Fotos x 3 Vistas",d:"Fondo blanco con 3 vistas",p:8500,u:"Por SKU",cat:"Fotografía"},
 {c:"FOTO-COLG",n:"Foto Producto Colgado",d:"Producto colgado 1 vista",p:5500,u:"Por SKU",cat:"Fotografía"},
@@ -163,12 +148,49 @@ const CAT=[
 {c:"SRV-INTL",n:"Internacionalización",d:"Adaptación mercados internacionales",p:250000,u:"Por Proyecto",cat:"Servicios Adicionales"},
 ];
 
-let items=[], logoURL=null;
+let CAT=[...CF],items=[],logoURL=null,pOk=false;
 const $=id=>document.getElementById(id);
 const fCLP=n=>'$'+Math.round(n).toLocaleString('es-CL');
 const fDate=s=>{if(!s)return'';const d=new Date(s+'T12:00:00');return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()]+' '+d.getFullYear()};
 
-// === INIT ===
+// PROXY
+async function pGet(a){if(!PROXY_URL)return null;try{const r=await fetch(PROXY_URL+'?action='+a);return await r.json()}catch(e){return null}}
+async function pPost(d){if(!PROXY_URL)return null;try{const r=await fetch(PROXY_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});return await r.json()}catch(e){return null}}
+function setS(s,t){const e=$('ss2');e.className='sb sb-'+s;e.innerHTML='<span class="sd2"></span> '+t}
+
+// SYNC
+async function syncCat(){
+    if(!PROXY_URL){setS('off','Sin proxy');$('catSrc').textContent='Local';return}
+    setS('ld','Sincronizando...');
+    const p=await pGet('ping');
+    if(!p||!p.ok){setS('off','Sin conexión');$('catSrc').textContent='Local';return}
+    const d=await pGet('catalogo');
+    if(d&&d.ok&&d.catalogo&&d.catalogo.length>0){
+        CAT=d.catalogo;pOk=true;setS('ok','Monday');$('catSrc').textContent='Monday ('+d.count+')';
+        toast('Catálogo sincronizado ✓');try{localStorage.setItem('fse_cc',JSON.stringify(CAT))}catch(e){}
+    }else{
+        try{const c=localStorage.getItem('fse_cc');if(c){CAT=JSON.parse(c);setS('off','Cache');$('catSrc').textContent='Cache ('+CAT.length+')'}}catch(e){}
+        if(!pOk)setS('off','Local');
+    }
+    bTabs();rCat();
+}
+
+function bTabs(){
+    const cats=[...new Set(CAT.map(s=>s.cat).filter(c=>c&&c!=='General'))];
+    const ic={'Fotografía':'📷','Producción':'🎬','Post-Producción':'🖥','Servicios Adicionales':'➕','Paquetes':'📦'};
+    $('ctabs').innerHTML='<div class="ctab active" onclick="fCat(\'all\',this)">Todos</div>'+cats.map(c=>'<div class="ctab" onclick="fCat(\''+c+'\',this)">'+(ic[c]||'📋')+' '+c+'</div>').join('');
+}
+
+// SAVE TO MONDAY
+async function saveMon(){
+    if(!PROXY_URL||!pOk)return null;
+    const sub=getSub(),tot=sub*1.19;
+    const r=await pPost({action:'guardar_presupuesto',numero:$('nco').value,empresa:$('cemp').value,contacto:$('ccon').value,email:$('cema').value,fecha:$('fem').value,validez:$('fve').value,monto_neto:sub,monto_total:tot,items:items.map(i=>({c:i.c,n:i.n,qty:i.qty,px:i.px})),descripcion:$('desc').value});
+    if(r&&r.ok){toast('Guardado en Monday ✓');return r}
+    return null;
+}
+
+// INIT
 document.addEventListener('DOMContentLoaded',()=>{
     const p=new URLSearchParams(location.search);
     $('nco').value=p.get('cotizacion')||'FSE'+(900+Math.floor(Math.random()*99));
@@ -179,105 +201,56 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(p.get('email'))$('cema').value=p.get('email');
     if(p.get('telefono'))$('ctel').value=p.get('telefono');
     if(p.get('descripcion'))$('desc').value=p.get('descripcion');
-    if(p.get('from')==='monday'){$('msrc').style.display='block';toast('Datos cargados de Monday: '+(p.get('empresa')||''))}
-    try{const sl=localStorage.getItem('fse_logo');if(sl){logoURL=sl;$('lp').innerHTML=`<img src="${logoURL}" alt="Logo"><p>Click para cambiar</p>`}}catch(e){}
-    rCat();
+    if(p.get('from')==='monday'){$('msrc').style.display='block';toast('Datos de Monday: '+(p.get('empresa')||''))}
+    try{const sl=localStorage.getItem('fse_logo');if(sl){logoURL=sl;$('lp').innerHTML='<img src="'+logoURL+'" alt="Logo"><p>Click para cambiar</p>'}}catch(e){}
+    bTabs();rCat();syncCat();
 });
 
-// === CATÁLOGO ===
-function rCat(f='all'){
-    const g=$('cg'),fl=f==='all'?CAT:CAT.filter(s=>s.cat===f);
-    g.innerHTML=fl.map(s=>`<div class="sc ${items.some(i=>i.c===s.c)?'sel':''}" onclick="tog('${s.c}')"><div class="sbg">✓</div><div class="sn">${s.n}</div><div class="sd">${s.d}</div><div class="sp">${fCLP(s.p)}</div><div class="su">${s.u}</div></div>`).join('');
-}
+// CATÁLOGO UI
+function rCat(f){f=f||'all';const g=$('cg'),fl=f==='all'?CAT:CAT.filter(s=>s.cat===f);g.innerHTML=fl.map(s=>'<div class="sc '+(items.some(i=>i.c===s.c)?'sel':'')+'" onclick="tog(\''+s.c+'\')"><div class="sbg">✓</div><div class="sn">'+s.n+'</div><div class="sd">'+s.d+'</div><div class="sp">'+fCLP(s.p)+'</div><div class="su">'+s.u+'</div></div>').join('')}
 function fCat(c,el){document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));el.classList.add('active');rCat(c)}
-function gCF(){const a=document.querySelector('.ctab.active');return!a||a.textContent.includes('Todos')?'all':a.textContent.replace(/[📷🎬🖥➕📦]/g,'').trim()}
+function gCF(){const a=document.querySelector('.ctab.active');if(!a)return'all';const t=a.textContent;return t.includes('Todos')?'all':t.replace(/[^\w\sáéíóúÁÉÍÓÚñÑ-]/g,'').trim()}
 
-// === ITEMS ===
-function tog(cod){
-    const i=items.findIndex(x=>x.c===cod);
-    if(i>=0)items.splice(i,1);
-    else{const s=CAT.find(x=>x.c===cod);if(s)items.push({...s,qty:1,px:s.p})}
-    rItems();rCat(gCF());
-}
+// ITEMS
+function tog(cod){const i=items.findIndex(x=>x.c===cod);if(i>=0)items.splice(i,1);else{const s=CAT.find(x=>x.c===cod);if(s)items.push({...s,qty:1,px:s.p})}rItems();rCat(gCF())}
 function addCust(){items.push({c:'X'+Date.now(),n:'',d:'',p:0,px:0,qty:1,u:'',cat:'',cust:true});rItems()}
-
 function rItems(){
     const tb=$('itb');
     if(!items.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:var(--g5);padding:30px">Selecciona servicios ☝️</td></tr>';$('tsec').style.display='none';uSt();return}
     $('tsec').style.display='flex';
-    tb.innerHTML=items.map((it,i)=>{
-        const im=it.px*it.qty;
-        const nm=it.cust?`<input type="text" value="${it.n}" onchange="items[${i}].n=this.value" style="width:100%;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:13px" placeholder="Nombre">`:`<strong>${it.n}</strong>`;
-        const ds=it.cust?`<input type="text" value="${it.d}" onchange="items[${i}].d=this.value" style="width:100%;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:12px" placeholder="Descripción">`:`<span style="font-size:12px;color:var(--g5)">${it.d}</span>`;
-        return `<tr><td>${nm}</td><td>${ds}</td><td style="text-align:right"><input class="pi" value="${it.px}" onchange="items[${i}].px=+this.value;rItems()"></td><td style="text-align:center"><input class="qi" value="${it.qty}" min="1" onchange="items[${i}].qty=+this.value||1;rItems()"></td><td class="am">${fCLP(im)}</td><td><button class="btn bd" onclick="items.splice(${i},1);rItems();rCat(gCF())">✕</button></td></tr>`;
-    }).join('');
+    tb.innerHTML=items.map((it,i)=>{const im=it.px*it.qty;const nm=it.cust?'<input type="text" value="'+it.n+'" onchange="items['+i+'].n=this.value" style="width:100%;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:13px" placeholder="Nombre">':'<strong>'+it.n+'</strong>';const ds=it.cust?'<input type="text" value="'+it.d+'" onchange="items['+i+'].d=this.value" style="width:100%;padding:4px 8px;border:1px solid var(--g3);border-radius:4px;font-size:12px" placeholder="Descripción">':'<span style="font-size:12px;color:var(--g5)">'+it.d+'</span>';return '<tr><td>'+nm+'</td><td>'+ds+'</td><td style="text-align:right"><input class="pi" value="'+it.px+'" onchange="items['+i+'].px=+this.value;rItems()"></td><td style="text-align:center"><input class="qi" value="'+it.qty+'" min="1" onchange="items['+i+'].qty=+this.value||1;rItems()"></td><td class="am">'+fCLP(im)+'</td><td><button class="btn bd" onclick="items.splice('+i+',1);rItems();rCat(gCF())">✕</button></td></tr>'}).join('');
     uTot();uSt();$('ic').textContent=items.length+' items';
 }
-
 function getSub(){return items.reduce((s,i)=>s+i.px*i.qty,0)}
 function uTot(){const s=getSub();$('tsub').textContent=fCLP(s);$('tiva').textContent=fCLP(s*.19);$('ttot').textContent=fCLP(s*1.19)}
 function uSt(){const s=getSub();$('si').textContent=items.length;$('ss').textContent=fCLP(s);$('stt').textContent=fCLP(s*1.19)}
 
-// === LOGO ===
-function hLogo(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{logoURL=ev.target.result;try{localStorage.setItem('fse_logo',logoURL)}catch(e){}$('lp').innerHTML=`<img src="${logoURL}" alt="Logo"><p>Click para cambiar</p>`;toast('Logo guardado ✓')};r.readAsDataURL(f)}
+// LOGO
+function hLogo(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{logoURL=ev.target.result;try{localStorage.setItem('fse_logo',logoURL)}catch(e){}$('lp').innerHTML='<img src="'+logoURL+'" alt="Logo"><p>Click para cambiar</p>';toast('Logo guardado ✓')};r.readAsDataURL(f)}
 
-// === NOTAS ===
+// NOTAS
 function addN(){const d=document.createElement('div');d.className='ni';d.innerHTML='<input class="nin" placeholder="Escribe nota..."><button class="btn bd" onclick="this.parentElement.remove()">✕</button>';$('nc').appendChild(d)}
 function gN(){return[...document.querySelectorAll('.nin')].map(i=>i.value).filter(v=>v.trim())}
 
-// === PREVIEW ===
+// PREVIEW
 function preview(){
     const sub=getSub(),iva=sub*.19,tot=sub*1.19;
-    const logo=logoURL?`<img src="${logoURL}" style="max-width:200px;max-height:90px;object-fit:contain">`:`<div style="font-size:32px;font-weight:800;color:#0099CC">FOTO SHOP<br><span style="font-size:16px;color:#555;font-weight:400;letter-spacing:4px">E S T U D I O</span></div>`;
-    const rows=items.map(i=>`<tr><td style="padding:8px;font-weight:600;font-size:12px">${i.n}</td><td style="padding:8px;font-size:11px;color:#666">${i.d}</td><td style="padding:8px;text-align:right;font-size:12px">${fCLP(i.px)}</td><td style="padding:8px;text-align:center">${i.qty}</td><td style="padding:8px;text-align:center;font-size:11px;color:#666">19%(Excl.)</td><td style="padding:8px;text-align:right;font-weight:600">${fCLP(i.px*i.qty)}</td></tr>`).join('');
-    const notas=gN().map(n=>`<div style="font-size:11px;color:#555;margin-bottom:3px">- ${n}</div>`).join('');
-    $('pc').innerHTML=`<div style="font-family:Helvetica,sans-serif;color:#333;max-width:700px;margin:0 auto">
-        <div style="text-align:right;font-size:12px;color:#888;margin-bottom:10px">${$('est').value}</div>
-        ${logo}<hr style="border:none;border-top:2px solid #0099CC;margin:16px 0">
-        <div style="display:flex;gap:24px"><div style="flex:1">
-            <div style="font-size:24px;font-weight:700;margin-bottom:10px">Cotización</div>
-            <div style="font-size:12px"><b>Cotización:</b> ${$('nco').value}</div>
-            <div style="font-size:12px;margin-bottom:10px"><b>Emitida:</b> ${fDate($('fem').value)}</div>
-            <div style="font-size:11px;font-weight:600;margin-bottom:4px">DE</div>
-            <div style="font-size:12px">Foto Shop Estudio</div>
-            <div style="font-size:11px;color:#666"><b>Tel:</b> +569 9330 6411</div>
-            <div style="font-size:11px;color:#666"><b>Email:</b> max@fotoshopestudio.cl</div>
-            <div style="font-size:11px;color:#666">Max Blanchard</div>
-            <div style="font-size:11px;color:#666">La Puntilla 15740, Lo Barnechea</div>
-        </div><div style="flex:1;border:1px solid #ddd;border-radius:6px;padding:14px">
-            <div style="font-size:12px;font-weight:700;margin-bottom:6px">CLIENTE</div>
-            <div style="font-size:13px;font-weight:600">${$('cemp').value||'—'}</div>
-            <div style="font-size:12px;color:#666">${$('ccon').value}</div>
-            <div style="font-size:11px;color:#666"><b>Tel:</b> ${$('ctel').value}</div>
-            <div style="font-size:11px;color:#666"><b>Email:</b> ${$('cema').value}</div>
-            <hr style="border:none;border-top:1px solid #eee;margin:8px 0">
-            <div style="font-size:12px;color:#555">${$('desc').value}</div>
-        </div></div>
-        ${$('ses').value?`<div style="font-size:13px;font-weight:700;margin:18px 0 8px">${$('ses').value}</div>`:''}
-        <table style="width:100%;border-collapse:collapse;margin-top:8px"><thead><tr style="background:#f5f5f5"><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Producto</th><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Descripción</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Precio</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Cant.</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Imp.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Importe</th></tr></thead><tbody>${rows}</tbody></table>
-        <div style="display:flex;justify-content:flex-end;margin-top:12px"><div style="width:220px">
-            <div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>Subtotal</span><span>${fCLP(sub)}</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>IVA 19%</span><span>${fCLP(iva)}</span></div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:6px 0;border-top:2px solid #0099CC;margin-top:4px"><span>Total</span><span>${fCLP(tot)}</span></div>
-        </div></div>
-        ${notas?`<div style="margin-top:18px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">NOTAS</div>${notas}</div>`:''}
-        ${$('fve').value?`<div style="margin-top:18px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">PROGRAMACIÓN DE PAGO</div><table style="width:100%;border-collapse:collapse"><tr style="background:#f5f5f5"><th style="text-align:left;padding:6px;font-size:10px">Vence</th><th style="text-align:left;padding:6px;font-size:10px">Importe</th></tr><tr><td style="padding:6px;font-size:12px">${fDate($('fve').value)}</td><td style="padding:6px;font-size:12px">${fCLP(tot)}</td></tr></table></div>`:''}
-    </div>`;
+    const logo=logoURL?'<img src="'+logoURL+'" style="max-width:200px;max-height:90px;object-fit:contain">':'<div style="font-size:32px;font-weight:800;color:#0099CC">FOTO SHOP<br><span style="font-size:16px;color:#555;font-weight:400;letter-spacing:4px">E S T U D I O</span></div>';
+    const rows=items.map(i=>'<tr><td style="padding:8px;font-weight:600;font-size:12px">'+i.n+'</td><td style="padding:8px;font-size:11px;color:#666">'+i.d+'</td><td style="padding:8px;text-align:right;font-size:12px">'+fCLP(i.px)+'</td><td style="padding:8px;text-align:center">'+i.qty+'</td><td style="padding:8px;text-align:center;font-size:11px;color:#666">19%</td><td style="padding:8px;text-align:right;font-weight:600">'+fCLP(i.px*i.qty)+'</td></tr>').join('');
+    const notas=gN().map(n=>'<div style="font-size:11px;color:#555;margin-bottom:3px">- '+n+'</div>').join('');
+    $('pc').innerHTML='<div style="font-family:Helvetica,sans-serif;color:#333;max-width:700px;margin:0 auto"><div style="text-align:right;font-size:12px;color:#888;margin-bottom:10px">'+$('est').value+'</div>'+logo+'<hr style="border:none;border-top:2px solid #0099CC;margin:16px 0"><div style="display:flex;gap:24px"><div style="flex:1"><div style="font-size:24px;font-weight:700;margin-bottom:10px">Cotización</div><div style="font-size:12px"><b>Nº:</b> '+$('nco').value+'</div><div style="font-size:12px;margin-bottom:10px"><b>Emitida:</b> '+fDate($('fem').value)+'</div><div style="font-size:11px;font-weight:600;margin-bottom:4px">DE</div><div style="font-size:12px">Foto Shop Estudio</div><div style="font-size:11px;color:#666"><b>Tel:</b> +569 9330 6411</div><div style="font-size:11px;color:#666"><b>Email:</b> max@fotoshopestudio.cl</div><div style="font-size:11px;color:#666">Max Blanchard</div><div style="font-size:11px;color:#666">La Puntilla 15740, Lo Barnechea</div></div><div style="flex:1;border:1px solid #ddd;border-radius:6px;padding:14px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">CLIENTE</div><div style="font-size:13px;font-weight:600">'+($('cemp').value||'—')+'</div><div style="font-size:12px;color:#666">'+$('ccon').value+'</div><div style="font-size:11px;color:#666"><b>Tel:</b> '+$('ctel').value+'</div><div style="font-size:11px;color:#666"><b>Email:</b> '+$('cema').value+'</div><hr style="border:none;border-top:1px solid #eee;margin:8px 0"><div style="font-size:12px;color:#555">'+$('desc').value+'</div></div></div>'+($('ses').value?'<div style="font-size:13px;font-weight:700;margin:18px 0 8px">'+$('ses').value+'</div>':'')+'<table style="width:100%;border-collapse:collapse;margin-top:8px"><thead><tr style="background:#f5f5f5"><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Producto</th><th style="text-align:left;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Desc.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Precio</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Cant.</th><th style="text-align:center;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Imp.</th><th style="text-align:right;padding:8px;font-size:10px;text-transform:uppercase;color:#555">Total</th></tr></thead><tbody>'+rows+'</tbody></table><div style="display:flex;justify-content:flex-end;margin-top:12px"><div style="width:220px"><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>Subtotal</span><span>'+fCLP(sub)+'</span></div><div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0"><span>IVA 19%</span><span>'+fCLP(iva)+'</span></div><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:6px 0;border-top:2px solid #0099CC;margin-top:4px"><span>Total</span><span>'+fCLP(tot)+'</span></div></div></div>'+(notas?'<div style="margin-top:18px"><div style="font-size:12px;font-weight:700;margin-bottom:6px">NOTAS</div>'+notas+'</div>':'')+'</div>';
     $('pov').classList.add('active');
 }
 function clPrev(){$('pov').classList.remove('active')}
 
-// === PDF ===
-function genPDF(){
+// PDF + GUARDAR
+async function genPDF(){
     const{jsPDF}=window.jspdf,doc=new jsPDF('p','mm','letter');
     const pW=doc.internal.pageSize.getWidth(),m=18,cW=pW-m*2;
     let y=15;const nc=$('nco').value||'FSE000';
-    
     doc.setFontSize(10);doc.setTextColor(150);doc.text($('est').value,pW-m,y,{align:'right'});
-    
-    if(logoURL){try{doc.addImage(logoURL,'PNG',m,y,50,25);y+=30}catch(e){tLogo()}}else{tLogo()}
-    function tLogo(){doc.setFontSize(24);doc.setTextColor(0,153,204);doc.setFont('helvetica','bold');doc.text('FOTO SHOP',m,y+8);doc.setFontSize(12);doc.setTextColor(100);doc.setFont('helvetica','normal');doc.text('E S T U D I O',m,y+16);y+=22}
-    
+    if(logoURL){try{doc.addImage(logoURL,'PNG',m,y,50,25);y+=30}catch(e){tL()}}else{tL()}
+    function tL(){doc.setFontSize(24);doc.setTextColor(0,153,204);doc.setFont('helvetica','bold');doc.text('FOTO SHOP',m,y+8);doc.setFontSize(12);doc.setTextColor(100);doc.setFont('helvetica','normal');doc.text('E S T U D I O',m,y+16);y+=22}
     doc.setDrawColor(0,153,204);doc.setLineWidth(.8);doc.line(m,y,pW-m,y);y+=10;
     doc.setFontSize(22);doc.setTextColor(30);doc.setFont('helvetica','bold');doc.text('Cotización',m,y);y+=8;
     doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(80);
@@ -286,7 +259,6 @@ function genPDF(){
     doc.text('Foto Shop Estudio',m,y);y+=4;doc.text('Teléfono: +569 9330 6411',m,y);y+=4;
     doc.text('Email: max@fotoshopestudio.cl',m,y);y+=4;doc.text('Empresa: Max Blanchard',m,y);y+=4;
     doc.text('La Puntilla 15740, Lo Barnechea',m,y);y+=4;doc.text('Región Metropolitana, Chile',m,y);
-    
     const cx=pW/2+5,cy0=y-36,cw=cW/2-5;
     doc.setDrawColor(200);doc.setLineWidth(.3);doc.rect(cx,cy0-4,cw,44);
     let cy=cy0;doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(30);
@@ -294,21 +266,10 @@ function genPDF(){
     doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(80);
     doc.text($('ccon').value||'',cx+4,cy);cy+=4;doc.text('Tel: '+($('ctel').value||''),cx+4,cy);cy+=4;
     doc.text('Email: '+($('cema').value||''),cx+4,cy);cy+=6;
-    doc.setDrawColor(230);doc.line(cx+4,cy-2,cx+cw-4,cy-2);doc.text($('desc').value||'',cx+4,cy+2);
-    y+=12;
-    
+    doc.setDrawColor(230);doc.line(cx+4,cy-2,cx+cw-4,cy-2);doc.text($('desc').value||'',cx+4,cy+2);y+=12;
     if($('ses').value){doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text($('ses').value,m,y);y+=8}
-    
-    const td=items.map(i=>[i.n,i.d,fCLP(i.px),String(i.qty),'19% (Excl.)',fCLP(i.px*i.qty)]);
-    if(td.length){
-        doc.autoTable({startY:y,head:[['Producto','Descripción','Precio','Cant.','Imp.','Importe']],body:td,margin:{left:m,right:m},
-            styles:{fontSize:8,textColor:[80,80,80],cellPadding:3,font:'helvetica'},
-            headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:7.5},
-            columnStyles:{0:{fontStyle:'bold',textColor:[30,30,30],cellWidth:cW*.18},1:{cellWidth:cW*.28},2:{halign:'right',cellWidth:cW*.14},3:{halign:'center',cellWidth:cW*.08},4:{halign:'center',cellWidth:cW*.12},5:{halign:'right',fontStyle:'bold',cellWidth:cW*.14}},
-            alternateRowStyles:{fillColor:[252,252,252]}});
-        y=doc.lastAutoTable.finalY+4;
-    }
-    
+    const td=items.map(i=>[i.n,i.d,fCLP(i.px),String(i.qty),'19%',fCLP(i.px*i.qty)]);
+    if(td.length){doc.autoTable({startY:y,head:[['Producto','Descripción','Precio','Cant.','Imp.','Importe']],body:td,margin:{left:m,right:m},styles:{fontSize:8,textColor:[80,80,80],cellPadding:3,font:'helvetica'},headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:7.5},columnStyles:{0:{fontStyle:'bold',textColor:[30,30,30],cellWidth:cW*.18},1:{cellWidth:cW*.28},2:{halign:'right',cellWidth:cW*.14},3:{halign:'center',cellWidth:cW*.08},4:{halign:'center',cellWidth:cW*.12},5:{halign:'right',fontStyle:'bold',cellWidth:cW*.14}},alternateRowStyles:{fillColor:[252,252,252]}});y=doc.lastAutoTable.finalY+4}
     const sub=getSub(),iva=sub*.19,tot=sub*1.19,tx=pW-m-55;
     doc.setFontSize(9);doc.setFont('helvetica','normal');doc.setTextColor(80);
     doc.text('Subtotal',tx,y);doc.text(fCLP(sub),pW-m,y,{align:'right'});y+=5;
@@ -316,16 +277,14 @@ function genPDF(){
     doc.setDrawColor(0,153,204);doc.setLineWidth(.6);doc.line(tx,y,pW-m,y);y+=5;
     doc.setFont('helvetica','bold');doc.setFontSize(11);doc.setTextColor(30);
     doc.text('Total',tx,y);doc.text(fCLP(tot),pW-m,y,{align:'right'});y+=12;
-    
     const notas=gN();
     if(notas.length){if(y>230){doc.addPage();y=20}doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text('NOTAS',m,y);y+=6;doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(100);notas.forEach(n=>{if(y>250){doc.addPage();y=20}const l=doc.splitTextToSize('- '+n,cW);doc.text(l,m,y);y+=l.length*4+2})}
-    
     if($('fve').value){if(y>240){doc.addPage();y=20}y+=4;doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(30);doc.text('PROGRAMACIÓN DE PAGO',m,y);y+=6;doc.autoTable({startY:y,head:[['Vence el','Importe']],body:[[fDate($('fve').value),fCLP(tot)]],margin:{left:m,right:m},styles:{fontSize:9,font:'helvetica'},headStyles:{fillColor:[245,245,245],textColor:[50,50,50],fontStyle:'bold',fontSize:8}})}
-    
-    doc.save('Cotizacion-'+nc+'.pdf');toast('PDF generado: Cotizacion-'+nc+'.pdf ✓');
+    doc.save('Cotizacion-'+nc+'.pdf');toast('PDF: Cotizacion-'+nc+'.pdf ✓');
+    if(pOk){toast('Guardando en Monday...');await saveMon()}
 }
 
-// === RESET & TOAST ===
+// RESET & TOAST
 function resetForm(){if(!confirm('¿Borrar todo?'))return;items=[];$('nco').value='FSE'+(900+Math.floor(Math.random()*99));['cemp','ccon','ctel','cema','desc','ses'].forEach(id=>$(id).value='');$('est').value='PENDIENTE';$('fem').value=new Date().toISOString().split('T')[0];document.querySelectorAll('.pf').forEach(e=>e.classList.remove('pf'));document.querySelectorAll('.pfb').forEach(e=>e.style.display='none');rItems();rCat();toast('Limpio ✓')}
 function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
 </script>
