@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cotización - Foto Shop Estudio</title>
+<title>Cotizacion - Foto Shop Estudio</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -69,7 +69,7 @@ tbody tr:last-child td{border-bottom:none}
 </head>
 <body>
 <div class="wrap">
-  <div id="loading" class="loading">Cargando cotización...</div>
+  <div id="loading" class="loading">Cargando cotizaci&#243;n...</div>
   <div id="content" style="display:none">
     <div class="card">
       <div class="head">
@@ -98,7 +98,7 @@ tbody tr:last-child td{border-bottom:none}
           <div style="font-size:13px;color:#555;padding:8px 0;border-top:1px solid #eee" id="desc_text"></div>
         </div>
         <table>
-          <thead><tr><th>Producto</th><th>Descripción</th><th class="r">Precio</th><th class="c">Cant.</th><th class="c">Imp.</th><th class="r">Importe</th></tr></thead>
+          <thead><tr><th>Producto</th><th>Descripci&#243;n</th><th class="r">Precio</th><th class="c">Cant.</th><th class="c">Imp.</th><th class="r">Importe</th></tr></thead>
           <tbody id="items_body"></tbody>
         </table>
         <div class="totals"><div class="totals-box">
@@ -111,22 +111,22 @@ tbody tr:last-child td{border-bottom:none}
           <div id="notas_list"></div>
         </div>
         <div id="pago_box" style="display:none" class="pago">
-          <div class="pago-t">PROGRAMACIÓN DE PAGO</div>
+          <div class="pago-t">PROGRAMACI&#211;N DE PAGO</div>
           <div class="pago-row"><span>Vence el: <b id="vence"></b></span><span><b id="pago_monto"></b></span></div>
         </div>
       </div>
       <div id="btns" class="btns" style="display:none">
-        <button class="btn btn-a" onclick="responder('aceptar')">✓ Aceptar Cotización</button>
-        <button class="btn btn-r" onclick="responder('rechazar')">✕ Rechazar</button>
+        <button class="btn btn-a" onclick="responder('aceptar')">&#10003; Aceptar Cotizaci&#243;n</button>
+        <button class="btn btn-r" onclick="responder('rechazar')">&#10005; Rechazar</button>
       </div>
       <div id="msg" style="display:none"></div>
     </div>
-    <div style="text-align:center;padding:20px;font-size:11px;color:#bbb">Foto Shop Estudio · La Puntilla 15740, Lo Barnechea · +569 9330 6411</div>
+    <div style="text-align:center;padding:20px;font-size:11px;color:#bbb">Foto Shop Estudio &#183; La Puntilla 15740, Lo Barnechea &#183; +569 9330 6411</div>
   </div>
   <div id="error" style="display:none;text-align:center;padding:80px 20px">
-    <div style="font-size:48px;margin-bottom:16px">📄</div>
-    <div style="font-size:18px;font-weight:600;color:#333;margin-bottom:8px">Cotización no encontrada</div>
-    <div style="font-size:14px;color:#888">El enlace puede estar incorrecto o la cotización ya no está disponible.</div>
+    <div style="font-size:48px;margin-bottom:16px">&#128196;</div>
+    <div style="font-size:18px;font-weight:600;color:#333;margin-bottom:8px">Cotizaci&#243;n no encontrada</div>
+    <div style="font-size:14px;color:#888">El enlace puede estar incorrecto o la cotizaci&#243;n ya no est&#225; disponible.</div>
   </div>
 </div>
 
@@ -175,18 +175,18 @@ function render(c){
   $('estado').className='estado estado-'+est.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   
   // Header
-  $('num').textContent='Cotización '+c.numero;
+  $('num').innerHTML='Cotizaci&#243;n '+c.numero;
   $('fecha').textContent=c.fecha_emision?'Emitida el '+c.fecha_emision:'';
   
   // Cliente
-  $('empresa').textContent=c.empresa||'—';
+  $('empresa').textContent=c.empresa||'&#8212;';
   $('contacto').textContent=c.contacto||'';
   const parts=[];
   if(c.email)parts.push(c.email);
   if(c.telefono)parts.push(c.telefono);
   $('email_tel').textContent=parts.join(' | ');
   
-  // Descripción
+  // Descripci&#243;n
   if(c.descripcion){
     $('desc_box').style.display='block';
     $('desc_text').textContent=c.descripcion;
@@ -237,16 +237,16 @@ function render(c){
     $('pago_monto').textContent=fCLP(c.total);
   }
   
-  // Botones solo si está pendiente/enviada
+  // Botones solo si est&#225; pendiente/enviada
   const estLow=est.toLowerCase();
   if(estLow==='enviada'||estLow==='pendiente'||estLow===''){
     $('btns').style.display='flex';
   }else{
     $('msg').style.display='block';
     if(estLow.includes('aceptada')){
-      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">✓ Cotización Aceptada</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar.</div>';
+      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">&#10003; Cotizaci&#243;n Aceptada</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar.</div>';
     }else{
-      $('msg').innerHTML='<div class="respondida"><b class="msg-no">✕ Cotización Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
+      $('msg').innerHTML='<div class="respondida"><b class="msg-no">&#10005; Cotizaci&#243;n Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
     }
   }
 }
@@ -260,19 +260,19 @@ async function responder(tipo){
     $('btns').style.display='none';
     $('msg').style.display='block';
     if(tipo==='aceptar'){
-      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">✓ ¡Cotización Aceptada!</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar los próximos pasos.</div>';
+      $('msg').innerHTML='<div class="respondida"><b class="msg-ok">&#10003; &#161;Cotizaci&#243;n Aceptada!</b><br>Gracias por tu confianza. Nos pondremos en contacto para coordinar los pr&#243;ximos pasos.</div>';
       $('estado').textContent='Aceptada';
       $('estado').className='estado estado-aceptada';
     }else{
-      $('msg').innerHTML='<div class="respondida"><b class="msg-no">✕ Cotización Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
+      $('msg').innerHTML='<div class="respondida"><b class="msg-no">&#10005; Cotizaci&#243;n Rechazada</b><br>Gracias por tu tiempo. Quedamos atentos para futuras oportunidades.</div>';
       $('estado').textContent='Rechazada';
       $('estado').className='estado estado-rechazada';
     }
   }catch(e){
     console.error(e);
     btns.forEach(b=>b.disabled=false);
-    btns[0].textContent='✓ Aceptar Cotización';
-    btns[1].textContent='✕ Rechazar';
+    btns[0].innerHTML='&#10003; Aceptar Cotizaci&#243;n';
+    btns[1].innerHTML='&#10005; Rechazar';
     alert('Error al procesar. Intenta de nuevo.');
   }
 }
