@@ -153,9 +153,9 @@ const $=id=>document.getElementById(id);
 const fCLP=n=>'$'+Math.round(n).toLocaleString('es-CL');
 const fDate=s=>{if(!s)return'';const d=new Date(s+'T12:00:00');return d.getDate()+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][d.getMonth()]+' '+d.getFullYear()};
 
-// PROXY
-async function pGet(a){if(!PROXY_URL)return null;try{const r=await fetch(PROXY_URL+'?action='+a);return await r.json()}catch(e){return null}}
-async function pPost(d){if(!PROXY_URL)return null;try{const r=await fetch(PROXY_URL,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});return await r.json()}catch(e){return null}}
+// PROXY (JSONP for GET to avoid CORS, fetch for POST)
+function pGet(a){if(!PROXY_URL)return Promise.resolve(null);return new Promise(function(res){var cb='_cb'+Date.now()+Math.random().toString(36).substr(2,5);var to=setTimeout(function(){delete window[cb];res(null)},15000);window[cb]=function(d){clearTimeout(to);delete window[cb];res(d)};var s=document.createElement('script');s.src=PROXY_URL+'?action='+a+'&callback='+cb;s.onerror=function(){clearTimeout(to);delete window[cb];res(null);s.remove()};document.head.appendChild(s);s.onload=function(){s.remove()}})}
+async function pPost(d){if(!PROXY_URL)return null;try{const r=await fetch(PROXY_URL,{method:'POST',redirect:'follow',body:JSON.stringify(d)});return await r.json()}catch(e){console.error('pPost err:',e);return null}}
 function setS(s,t){const e=$('ss2');e.className='sb sb-'+s;e.innerHTML='<span class="sd2"></span> '+t}
 
 // SYNC
