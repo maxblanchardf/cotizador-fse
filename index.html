@@ -185,8 +185,9 @@ function bTabs(){
 async function saveMon(){
     if(!PROXY_URL||!pOk)return null;
     const sub=getSub(),tot=sub*1.19;
-    const r=await pPost({action:'guardar_presupuesto',numero:$('nco').value,empresa:$('cemp').value,contacto:$('ccon').value,email:$('cema').value,fecha:$('fem').value,validez:$('fve').value,monto_neto:sub,monto_total:tot,items:items.map(i=>({c:i.c,n:i.n,qty:i.qty,px:i.px})),descripcion:$('desc').value});
+    const r=await pPost({action:'guardar_presupuesto',numero:$('nco').value,empresa:$('cemp').value,contacto:$('ccon').value,email:$('cema').value,telefono:$('ctel').value,fecha:$('fem').value,validez:$('fve').value,monto_neto:sub,monto_total:tot,items:items.map(i=>({c:i.c,n:i.n,qty:i.qty,px:i.px,d:i.d})),descripcion:$('desc').value,notas:gN()});
     if(r&&r.ok){toast('Guardado en Monday ✓');return r}
+    if(r&&r.error){toast('Error: '+r.error);console.error(r)}
     return null;
 }
 
